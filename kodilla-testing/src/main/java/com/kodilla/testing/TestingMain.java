@@ -6,15 +6,7 @@ import com.kodilla.testing.user.SimpleUser;
 public class TestingMain {
     public static void main(String[] args) {
 
-    //#1 Testing user
-        SimpleUser simpleUser = new SimpleUser("simple name");
-        String result = simpleUser.getUsername();
 
-        if (result.equals("simple name")) {
-            System.out.println("Test user: OK");
-        } else {
-            System.out.println("Test user: error!!!");
-        }
     //#2 Testing calculator
 
         Calculator calculator = new Calculator();
