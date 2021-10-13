@@ -1,4 +1,4 @@
-package com.kodilla.testing.forum.tdd;
+package com.kodilla.testing.shape;
 
 import com.kodilla.testing.shape.Circle;
 import com.kodilla.testing.shape.ShapeCollector;
