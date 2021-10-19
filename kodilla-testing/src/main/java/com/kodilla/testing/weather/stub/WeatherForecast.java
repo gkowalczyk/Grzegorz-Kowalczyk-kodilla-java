@@ -17,14 +17,14 @@ public class WeatherForecast {
     }
     return resultMap;
     }
-    public double getAverage(Map<String,Double>  mapToAverage) {
+    public double getAverage() {
         double sum = 0;
         for (double valuesT : calculateForecast().values()) {
             sum = sum + valuesT;
         }
             return sum/calculateForecast().size();
     }
-    public  double getMedian(Map<String,Double>  mapToMedian ) {
+    public  double getMedian() {
     Collection<Double> valuesMap = calculateForecast().values();
     List<Double> list = new ArrayList<Double>(valuesMap);
     Collections.sort(list);

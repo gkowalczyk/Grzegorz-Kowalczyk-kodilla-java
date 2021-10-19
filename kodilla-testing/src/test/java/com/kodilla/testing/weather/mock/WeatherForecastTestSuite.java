@@ -27,7 +27,7 @@ public class WeatherForecastTestSuite {
         testCounter++;
         System.out.println("Preparing to execute test #" + testCounter);
     }
-    private Temperatures temperatureMock;
+   // private Temperatures temperatureMock;
 
     @DisplayName("Calculate Weather")
     @Test
@@ -61,7 +61,7 @@ public class WeatherForecastTestSuite {
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double expectedAverage = weatherForecast.getAverage(temperaturesMap);
+        double expectedAverage = weatherForecast.getAverage();
         //Then
         Assertions.assertEquals(27.0, Math.round(expectedAverage));
     }
@@ -79,7 +79,7 @@ public class WeatherForecastTestSuite {
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
-        double expectedMedianValue = weatherForecast.getMedian(temperaturesMap);
+        double expectedMedianValue = weatherForecast.getMedian();
         //Then
         Assertions.assertEquals(26.5, expectedMedianValue);
     }
