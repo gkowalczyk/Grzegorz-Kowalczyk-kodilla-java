@@ -16,7 +16,7 @@ public class StreamMain {
         .filter(forumUser -> forumUser.getBirthDate().getYear() < expectedYear )
         .filter(forumUser -> forumUser.getPostNumber() >= 1 )
         .collect(Collectors.toMap(ForumUser::getIdNumber, forumUser ->forumUser));
-        System.out.println("Filter by ID User=" );
+        System.out.println("Filter by ID=" );
         finalList.entrySet().stream()
         .map(entry -> entry.getKey() + " : "+ entry.getValue())
         .forEach(System.out::println);
