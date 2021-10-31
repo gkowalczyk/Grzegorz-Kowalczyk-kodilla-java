@@ -3,19 +3,26 @@ package com.kodilla.stream.portfolio;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TaskList {
+public final class TaskList {
 
     private final List<Task> tasks = new LinkedList<>();
     private final String name;
 
-
-
-    public TaskList(String name) {
+    public TaskList(final String name) {
         this.name = name;
     }
 
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public boolean removeTask(Task task) {
+        return tasks.remove(task);
+    }
+
     public List<Task> getTasks() {
-        return new LinkedList<>(tasks);
+       return new LinkedList<>(tasks);
+        //return tasks;
     }
 
     public String getName() {
@@ -25,36 +32,16 @@ public class TaskList {
     @Override
     public String toString() {
         return "TaskList{" +
-                "tasks=" + tasks +
-                ", name='" + name + '\'' +
-                '}';
+                "name='" + name + '\'' + ",\n" +
+                "tasks=\n" + tasks + "\n" +
+                '}' + "\n";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof TaskList)) return false;
         TaskList taskList = (TaskList) o;
-
-        if (!getTasks().equals(taskList.getTasks())) return false;
-        return getName().equals(taskList.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getTasks().hashCode();
-        result = 31 * result + getName().hashCode();
-        return result;
-    }
-    public void addTask(Task task) {
-        tasks.add(task);
-    }
-    public boolean remove(Task task) {
-        return tasks.remove(task);
+        return name.equals(taskList.name);
     }
 }
-
-
-
-
