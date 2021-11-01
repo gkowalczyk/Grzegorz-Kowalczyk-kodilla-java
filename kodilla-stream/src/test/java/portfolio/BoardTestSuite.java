@@ -96,6 +96,7 @@ public class BoardTestSuite {
         project.addTaskList(taskListDone);
         return project;
     }
+
     @Test
     void testAddTaskListFindUsersTasks() {
         //Given
@@ -114,6 +115,7 @@ public class BoardTestSuite {
         //  System.out.println(tasks.get(0));
         //  System.out.println(tasks.get(1));
     }
+
     @Test
     void testAddTaskListFindOutdatedTasks() {
         //Given
@@ -132,6 +134,7 @@ public class BoardTestSuite {
         assertEquals(1, tasks.size());
         assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
+
     @Test
     void testAddtaskListFindLongTasks() {
         //Given
@@ -148,6 +151,7 @@ public class BoardTestSuite {
         //Then
         assertEquals(2, longTasks);
     }
+
     @DisplayName("average and display amount of day between start task to now ")
     @Test
     void testAddTaskListAverageWorkingOnTask() {
@@ -166,12 +170,12 @@ public class BoardTestSuite {
                 .filter(inProgressTasks::contains)
                 .flatMap(l -> l.getTasks().stream())
                 .map(l -> Period.between(l.getCreated(), LocalDate.now()).getDays())
-                 .map(x -> {
-                  System.out.println("counter days:" + x);
-                  return x;
-                 })
+                .map(x -> {
+                    System.out.println("counter days:" + x);
+                    return x;
+                })
                 .reduce(0, (sum, current) -> sum = sum + current);
-                long avg = sumDays / number;
+        long avg = sumDays / number;
         //Then
         assertEquals(10, avg);
     }
