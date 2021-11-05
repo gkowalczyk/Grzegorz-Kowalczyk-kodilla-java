@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class SearchingFlight {
 
-
     public Map<String, Boolean> airportMap() {
 
         Map<String, Boolean> result = new HashMap<>();
@@ -13,20 +12,23 @@ public class SearchingFlight {
         result.put("KRA", true);
         result.put("RZE", true);
         result.put("GDA", false);
-
         return result;
     }
 
     public void findFlight(Flight flight) throws RouteNotFoundException {
 
-
-        if (airportMap().get(flight.getArrivalAirport()) || airportMap().get(flight.getDepartureAirport())) {
-            System.out.println("You can fly");
-
+        if (flight.getArrivalAirport().equals(flight.getDepartureAirport())) {
+            throw new RouteNotFoundException();
+        }
+        if (airportMap().containsKey(flight.getArrivalAirport()) && (airportMap().containsKey(flight.getDepartureAirport()) &&
+                (airportMap().get(flight.getArrivalAirport())))) {
+            System.out.println("You can fly to: " + flight.getArrivalAirport() + " from:" + flight.getDepartureAirport());
         } else {
             System.out.println("Find different directions");
             throw new RouteNotFoundException();
         }
     }
 }
+//abstract V get(Object key)  Returns the value to which the key is mapped in this dictionary.
+//public abstract boolean containsKey(Object key) Returns: true if this map contains a mapping for the specified key
 
