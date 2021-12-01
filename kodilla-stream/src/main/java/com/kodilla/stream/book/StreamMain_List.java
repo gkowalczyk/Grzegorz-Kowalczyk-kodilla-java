@@ -8,13 +8,13 @@ public class StreamMain_List {
 BookDirectory bookDirectory = new BookDirectory();
 //bookDirectory.getList().stream()
         List<Book> theResultListOfBook = bookDirectory.getList().stream()
-        .filter(book -> book.getYearOfProduction() > 2005)
-     //  .forEach(System.out::println);
+        .filter(book-> book.getYearOfProduction() > 2005)
+       //.forEach(System.out::println);
             .collect(Collectors.toList());
 
         System.out.println("# elements: " + theResultListOfBook.size());
         theResultListOfBook.stream()
-               .forEach(System.out::println);
+          .forEach(System.out::println);
 
 
     }

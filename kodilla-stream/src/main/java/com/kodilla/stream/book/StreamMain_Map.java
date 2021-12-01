@@ -13,7 +13,7 @@ public class StreamMain_Map {
 
     Map<String,Book> theResultMapofBooks = theBookDirectory.getList().stream()
             .filter(book -> book.getYearOfProduction() > 2005)
-            .collect(Collectors.toMap(Book::getAuthor, book -> book));
+            .collect(Collectors.toMap(Book::getSignature, book -> book));
 
         System.out.println("elements:" + theResultMapofBooks.size());
 theResultMapofBooks.entrySet().stream()

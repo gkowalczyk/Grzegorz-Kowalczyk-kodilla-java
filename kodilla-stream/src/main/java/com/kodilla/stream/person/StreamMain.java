@@ -10,6 +10,8 @@ public class StreamMain {
                 .map(s -> s.toUpperCase())
                 .forEach(System.out::println);
 
+        System.out.println("\n");
+
         People.getList().stream()
                .map(String::toUpperCase)
                .forEach(s -> System.out.println(s));
