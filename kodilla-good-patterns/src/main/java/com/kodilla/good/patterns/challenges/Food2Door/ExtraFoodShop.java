@@ -12,12 +12,12 @@ listProduct = mapListProduct();
     }
 
     private Map<Product, Integer> mapListProduct() {
-        Map<Product,Integer> addListProduct = new HashMap<>();
+        Map<Product,Integer> listProduct = new HashMap<>();
 
-        addListProduct.put(new Product("pickled cucumbers"), 10000);
-        addListProduct.put(new Product("prawns"), 1000);
+        listProduct.put(new Product("pickled cucumbers"), 10000);
+        listProduct.put(new Product("prawns"), 1000);
 
-        return addListProduct;
+        return listProduct;
     }
 
     @Override
