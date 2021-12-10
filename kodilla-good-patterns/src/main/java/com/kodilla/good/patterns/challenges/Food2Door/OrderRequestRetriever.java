@@ -12,11 +12,11 @@ public class OrderRequestRetriever {
 
         Customer customer = new Customer("Customer1");
         FoodSupplier foodSupplier = new ExtraFoodShop();
-        Map<Product, Integer> productList = new HashMap<>();
+        Map<Product, Integer> listProduct = new HashMap<>();
 
-        productList.put(new ExtraFoodExample("prawns", "sea fruit"), 1);
+        listProduct.put(new ExtraFoodExample("prawns", "sea fruit"), 6);
 
-     orderRequestList.add(new OrderRequest(customer,foodSupplier,productList));
+     orderRequestList.add(new OrderRequest(customer,foodSupplier,listProduct));
      return orderRequestList;
 
     }
