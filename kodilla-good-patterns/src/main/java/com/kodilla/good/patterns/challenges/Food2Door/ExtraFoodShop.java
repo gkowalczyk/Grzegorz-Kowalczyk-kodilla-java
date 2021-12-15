@@ -14,8 +14,8 @@ listProduct = mapListProduct();
     private Map<Product, Integer> mapListProduct() {
         Map<Product,Integer> listProduct = new HashMap<>();
 
-        listProduct.put(new Product("pickled cucumbers"), 10000);
-        listProduct.put(new Product("prawns"), 8);
+       // listProduct.put(new Product("pickled cucumbers",), 10000);
+       // listProduct.put(new Product("prawns"), 8);
 
         return listProduct;
     }

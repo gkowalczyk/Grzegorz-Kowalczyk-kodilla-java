@@ -4,7 +4,6 @@ import java.util.List;
 
 public class OrderProcessor {
 
-
     public void processAll(List<OrderRequest> orderRequestList) {
 
         orderRequestList.stream()
