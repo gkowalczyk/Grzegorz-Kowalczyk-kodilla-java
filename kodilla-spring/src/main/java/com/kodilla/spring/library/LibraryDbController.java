@@ -2,7 +2,7 @@ package com.kodilla.spring.library;
 
 import org.springframework.stereotype.Repository;
 
-@Repository //składowanie danych w repozytoriach
+ //składowanie danych w repozytoriach
 public class LibraryDbController {
 
     public void saveData() {
