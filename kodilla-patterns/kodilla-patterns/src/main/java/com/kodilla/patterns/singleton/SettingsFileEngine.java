@@ -2,16 +2,18 @@ package com.kodilla.patterns.singleton;
 
 import com.kodilla.patterns.enums.hotel.Season;
 
-public final class SettingsFileEngine {
+public enum SettingsFileEngine {
+    INSTANCE;
+
     private String filename = "";
 
     public String getFilename() {
         return filename;
     }
 
-    public SettingsFileEngine() { //pusty konstruktor?
+    //public SettingsFileEngine() { //pusty konstruktor?
 
-    }
+   // }
 
     public void close() {
         this.filename = "";

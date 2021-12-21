@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SettingsFileEngineTestSuite {
 
@@ -12,7 +13,7 @@ public class SettingsFileEngineTestSuite {
 
     @BeforeAll
     public static void openSettingsFile() {
-        settingsFileEngine = new SettingsFileEngine();
+        settingsFileEngine = SettingsFileEngine.INSTANCE;
         settingsFileEngine.open("myApp.settings");
     }
     @AfterAll
@@ -29,6 +30,21 @@ public class SettingsFileEngineTestSuite {
         //Then
         assertEquals("myApp.settings", fileName);
     }
-
+    @Test
+    void testLoadSettings() {
+        //Given
+        //When
+        boolean result = settingsFileEngine.loadSettings();
+        //Then
+        assertTrue(result);
+    }
+    @Test
+    void testSaveSettings() {
+        //Given
+        //When
+        boolean result = settingsFileEngine.saveSettings();
+        //Then
+        assertTrue(result);
+    }
 }
 
