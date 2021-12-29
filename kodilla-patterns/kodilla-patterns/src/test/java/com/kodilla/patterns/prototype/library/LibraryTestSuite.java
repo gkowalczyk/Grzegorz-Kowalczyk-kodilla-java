@@ -43,6 +43,6 @@ public class LibraryTestSuite {
         System.out.println(deepClone);
         assertEquals(1, library.getBooks().size());
         assertEquals(1, shallowClone.getBooks().size());
-        assertNotEquals(library.getBooks().size(), 2);
+        assertEquals(deepClone.getBooks().size(), 2);
     }
 }
