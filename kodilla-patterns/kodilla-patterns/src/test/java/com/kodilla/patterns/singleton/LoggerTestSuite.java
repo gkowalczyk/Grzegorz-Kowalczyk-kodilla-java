@@ -20,5 +20,9 @@ public class LoggerTestSuite {
         //Then
         assertEquals(log2, Logger.getInstance().getLastLog());
         System.out.println(Logger.getInstance().getLastLog());
+
+        //Singleton jest to po prostu klasa, która jest instancjonowana w
+        // systemie tylko jeden raz.
+        // Każde użycie takiej klasy odnosi się do tej samej instancji.
     }
 }

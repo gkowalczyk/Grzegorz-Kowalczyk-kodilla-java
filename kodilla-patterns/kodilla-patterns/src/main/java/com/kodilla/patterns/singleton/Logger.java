@@ -14,10 +14,13 @@ public class Logger {
         return lastLog;
     }
 
+    //Identyfikacja: Singleton można rozpoznać po
+    // statycznej metodzie kreacyjnej zwracającej jakiś
+    // obiekt którego instancja jest przechowywana w pamięci podręcznej.
     public static Logger getInstance() {
         if (logger == null) {
-            logger = new Logger();
-        }
+           logger = new Logger();
+       }
         return logger;
     }
 }
