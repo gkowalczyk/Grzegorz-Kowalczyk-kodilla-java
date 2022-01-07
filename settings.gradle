@@ -9,4 +9,7 @@ include 'kodilla-spring'
 include 'kodilla-spring-web'
 include 'kodilla-patterns:kodilla-patterns'
 findProject(':kodilla-patterns:kodilla-patterns')?.name = 'kodilla-patterns'
+include 'kodilla-baza danych'
+include 'kodilla-baza danych'
+include 'kodilla-bazy danych'
 
