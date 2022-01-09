@@ -12,4 +12,5 @@ findProject(':kodilla-patterns:kodilla-patterns')?.name = 'kodilla-patterns'
 include 'kodilla-baza danych'
 include 'kodilla-baza danych'
 include 'kodilla-bazy danych'
+include 'kodilla-jdbc'
 
