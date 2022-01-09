@@ -16,24 +16,24 @@ public class testSelectUsersAndPosts {
         //When
         String sqlQuery =
                 "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER\n" +
-                "FROM USERS U\n" +
-                "JOIN POSTS P ON U.ID = P.USER_ID\n" +
-                "GROUP BY P.USER_ID\n" +
-                "HAVING COUNT(*) > 1";
+                        "FROM USERS U\n" +
+                        "JOIN POSTS P ON U.ID = P.USER_ID\n" +
+                        "GROUP BY P.USER_ID\n" +
+                        "HAVING COUNT(*) > 1";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(sqlQuery);
         //then
         int counter = 0;
         while (rs.next()) {
-            System.out.println("Amount posts:" + rs.getInt("POSTS_NUMBER") + "\n" +
-                    "written by:" + rs.getString("FIRSTNAME") + "," +
-                    rs.getString("LASTNAME"));
+            System.out.println("Amount posts:" + rs.getInt("POSTS_NUMBER" ) + "\n" +
+                    "written by:" + rs.getString("FIRSTNAME" ) + "," +
+                    rs.getString("LASTNAME" ));
             counter++;
         }
         rs.close();
         statement.close();
-        assertEquals(1,counter);
-        }
+        assertEquals(1, counter);
+    }
 }
 
 
