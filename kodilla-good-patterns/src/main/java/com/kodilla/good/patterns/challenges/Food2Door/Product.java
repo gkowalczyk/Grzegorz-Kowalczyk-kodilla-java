@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.math.BigDecimal;
+
 import java.util.Objects;
 
 public class Product {
@@ -13,22 +13,12 @@ public class Product {
         this.foodSupplier = foodSupplier;
     }
 
-
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public FoodSupplier getFoodSupplier() {
         return foodSupplier;
-    }
-
-    public void setFoodSupplier(FoodSupplier foodSupplier) {
-        this.foodSupplier = foodSupplier;
     }
 
     @Override
@@ -44,6 +34,4 @@ public class Product {
         return Objects.hash(name, foodSupplier);
     }
 }
-
-
 

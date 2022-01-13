@@ -6,12 +6,12 @@ public class OrderRequest {
 
     private Customer customer;
     private FoodSupplier foodSupplier;
-    private Map<Product, Integer> orderRequest;
+    private Map<Product, Integer> products;
 
     public OrderRequest(Customer customer, FoodSupplier foodSupplier, Map<Product, Integer> orderRequest) {
         this.customer = customer;
         this.foodSupplier = foodSupplier;
-        this.orderRequest = orderRequest;
+        this.products = orderRequest;
     }
 
     public Customer getCustomer() {
@@ -22,8 +22,8 @@ public class OrderRequest {
         return foodSupplier;
     }
 
-    public Map<Product, Integer> getOrderRequest() {
-        return orderRequest;
+    public Map<Product, Integer> getProducts() {
+        return products;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class OrderRequest {
         return "OrderRequest{" +
                 "customer=" + customer +
                 ", foodSupplier=" + foodSupplier +
-                ", orderRequest=" + orderRequest +
+                ", orderRequest=" + products +
                 '}';
     }
 }

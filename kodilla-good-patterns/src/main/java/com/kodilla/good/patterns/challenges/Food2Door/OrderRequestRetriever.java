@@ -5,21 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OrderRequestRetriever {
+//public class OrderRequestRetriever {
 
-    public List<OrderRequest> retrieve() {
-        List<OrderRequest> orderRequestList = new ArrayList<>();
+   // public List<Product> retrieve() {
+     //   List<Product> orderRequestList = new ArrayList<>();
 
-        Customer customer = new Customer("Customer1");
-        FoodSupplier foodSupplier = new ExtraFoodShop();
-        Map<Product, Integer> listProduct = new HashMap<>();
+      //  Customer customer = new Customer("Customer1");
+       // FoodSupplier foodSupplier = new ExtraFoodShop();
+       // Map<Product, Integer> listProduct = new HashMap<>();
 
-        listProduct.put(new ExtraFoodExample("prawns", "sea fruit"), 6);
+        //listProduct.put(new MeatProduct("prawns", "sea fruit"), 6);
+       // listProduct.put(new MeatProduct("Healthy&Meat", "Beef"), 11);
 
-     orderRequestList.add(new OrderRequest(customer,foodSupplier,listProduct));
-     return orderRequestList;
+     //orderRequestList.add(new OrderRequest(customer,foodSupplier,listProduct));
+    /// return orderRequestList;
 
-    }
+  //  }
+//}
 
 
-}

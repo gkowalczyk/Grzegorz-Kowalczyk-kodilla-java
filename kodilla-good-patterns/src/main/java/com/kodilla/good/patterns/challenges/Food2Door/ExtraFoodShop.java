@@ -6,32 +6,27 @@ import java.util.Optional;
 
 public class ExtraFoodShop implements FoodSupplier{
 
-    private Map<Product, Integer> listProduct;
-    public ExtraFoodShop() {
-listProduct = mapListProduct();
-    }
-
-    private Map<Product, Integer> mapListProduct() {
-        Map<Product,Integer> listProduct = new HashMap<>();
-
-       // listProduct.put(new Product("pickled cucumbers",), 10000);
-       // listProduct.put(new Product("prawns"), 8);
-
-        return listProduct;
-    }
+    private Map<String, Integer> listProduct = Map.of(
+       "beaf",4
+    );
 
     @Override
-    public boolean process(Customer customer, Map<Product, Integer> productOrder) {
-       return isAvailable(productOrder);
+    public boolean process(Customer customer, Product product, int count) {
+        return false;
+
+
+
    }
-    private boolean isAvailable(Map<Product,Integer> productOrder) {
-        for (Map.Entry <Product, Integer> entry : productOrder.entrySet()){
-            Optional<Integer>  productOptional = Optional.ofNullable(listProduct.get(entry.getKey()));
-            if (productOptional.orElse(0) < entry.getValue()) {
-                System.out.println("Product is out of stock or too little  ");
-                return false;
-            }
+    private boolean isAvailable(Product product, int count) {
+        int availableProductCount =   listProduct.getOrDefault(product.getName(),0);
+
+        if (availableProductCount >= count) {
+            int available = availableProductCount - count;
+            return  true;
+               }  else {
+            return  false;
         }
-        return true;
+
+
     }
 }
