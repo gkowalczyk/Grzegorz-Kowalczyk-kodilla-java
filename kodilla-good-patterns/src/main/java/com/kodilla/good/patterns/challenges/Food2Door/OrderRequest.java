@@ -5,21 +5,16 @@ import java.util.Map;
 public class OrderRequest {
 
     private Customer customer;
-    private FoodSupplier foodSupplier;
     private Map<Product, Integer> products;
 
-    public OrderRequest(Customer customer, FoodSupplier foodSupplier, Map<Product, Integer> orderRequest) {
+    public OrderRequest(Customer customer, Map<Product, Integer> orderRequest) {
         this.customer = customer;
-        this.foodSupplier = foodSupplier;
+
         this.products = orderRequest;
     }
 
     public Customer getCustomer() {
         return customer;
-    }
-
-    public FoodSupplier getFoodSupplier() {
-        return foodSupplier;
     }
 
     public Map<Product, Integer> getProducts() {
@@ -30,7 +25,6 @@ public class OrderRequest {
     public String toString() {
         return "OrderRequest{" +
                 "customer=" + customer +
-                ", foodSupplier=" + foodSupplier +
                 ", orderRequest=" + products +
                 '}';
     }
