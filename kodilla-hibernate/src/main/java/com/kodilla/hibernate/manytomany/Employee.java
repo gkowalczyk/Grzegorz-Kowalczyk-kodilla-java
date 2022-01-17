@@ -1,10 +1,16 @@
 package com.kodilla.hibernate.manytomany;
 
 import com.sun.istack.NotNull;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedQuery(
+        name = "Employee.retrieveSurnameIfEqual",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 
 @Entity
 @Table(name = "EMPLOYEES")

@@ -46,4 +46,5 @@ public class InvoiceDaoTestSuite {
         //cleanUp
         invoiceDao.deleteById(id);
     }
+
 }
