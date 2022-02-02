@@ -16,6 +16,7 @@ public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
     private EmployeeDao employeeDao;
 
     @Test

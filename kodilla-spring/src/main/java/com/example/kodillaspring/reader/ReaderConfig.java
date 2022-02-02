@@ -13,7 +13,9 @@ public class ReaderConfig {
 @Qualifier("book1")  // tworzenie domyślnej nazwy beana,który obiekt ma wstrzyknąć
     Book book;
 
-@Bean
+
+
+    @Bean
     public Reader getReader() {
     return new Reader(book);
 }
