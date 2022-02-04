@@ -1,0 +1,26 @@
+[33mcommit a757b02ea79f5b67b032b8d664f0028783efb23b[m[33m ([m[1;36mHEAD -> [m[1;32mnazwa_brancha[m[33m, [m[1;31morigin/nazwa_brancha[m[33m)[m
+Author: Grzegorz Kowalczyk <86222743+gkowalczyk@users.noreply.github.com>
+Date:   Thu Jan 27 20:28:27 2022 +0100
+
+    Update FirstClass.java
+
+[33mcommit f768a4bc852d9fc9025edb6e12cd42a4f70d837e[m[33m ([m[1;31morigin/main[m[33m)[m
+Merge: 490068f 45daa15
+Author: Grzegorz Kowalczyk <86222743+gkowalczyk@users.noreply.github.com>
+Date:   Thu Jan 27 20:26:34 2022 +0100
+
+    Merge pull request #1 from gkowalczyk/nazwa_brancha
+    
+    1
+
+[33mcommit 45daa1515354ce74460c3ba0a34bd2732ae43255[m
+Author: gkow <gkowalczyk@github.com>
+Date:   Thu Jan 27 20:21:45 2022 +0100
+
+    1
+
+[33mcommit 490068f0d209add714ab531818113ec327189083[m[33m ([m[1;32mmain[m[33m)[m
+Author: gkow <gkowalczyk@github.com>
+Date:   Thu Jan 27 20:06:01 2022 +0100
+
+    1
