@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&subset=latin-ext" rel="stylesheet">
 </head>
 <body>
-<h1 class="kodilla-heading kodilla-heading--main">Kodilla CRUD App</h1>
+<h1 class="kodilla-heading kodilla-heading--main"> CRUD App</h1>
 
 <main class="crud container">
     <section class="datatable">
@@ -71,6 +71,19 @@
             <button type="button" data-task-delete-button class="datatable__button">Delete</button>
         </fieldset>
     </form>
+    <fieldset class="datatable__row-section datatable__row-section--trello-section">
+        <select class="datatable__select" name="board-name" data-board-name-select>
+            <option disabled selected>--- select an board ---</option>
+        </select>
+        <select class="datatable__select" name="list-name" data-list-name-select>
+            <option disabled selected>--- select a list ---</option>
+        </select>
+        <button type="button" data-trello-card-creation-trigger class="datatable__button datatable__button--card-creation">
+            Create a card
+        </button>
+    </fieldset>
+</div>
+</form>
 </div>
 
 <script src="jquery-3.6.0.min.js"></script>
