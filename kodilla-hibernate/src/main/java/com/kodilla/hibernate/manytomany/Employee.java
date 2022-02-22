@@ -7,9 +7,15 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @NamedQuery(
         name = "Employee.retrieveSurnameIfEqual",
         query = "FROM Employee WHERE lastname = :LASTNAME"
+)
+@NamedNativeQuery(
+        name = "Employee.returnNameEmployee",
+        query = "SELECT *FROM EMPLOYEES WHERE LASTNAME LIKE CONCAT('%', :EMPLOYEENAME, '%')",
+        resultClass = Employee.class
 )
 
 @Entity

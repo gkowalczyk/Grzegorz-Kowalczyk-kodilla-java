@@ -1,5 +1,6 @@
+
 plugins {
-        id 'java'
+    id 'java'
 }
 
 group = 'com.kodilla'
@@ -11,7 +12,6 @@ repositories {
 }
 
 dependencies {
-
 }
 
 test {
