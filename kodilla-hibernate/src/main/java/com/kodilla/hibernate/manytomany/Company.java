@@ -9,12 +9,12 @@ import java.util.List;
 @NamedNativeQueries({
 @NamedNativeQuery(
         name = "Company.returnFirstThreeSignFromCompanyName",
-        query = "SELECT *FROM COMPANY" + "WHERE  SUBSTRING(COMPANY_NAME,1,3) = :NAME" , //https://www.w3schools.com/sql/func_sqlserver_substring.asp
+        query = "SELECT * FROM COMPANIES" + "WHERE  SUBSTRING(COMPANY_NAME,1,3) = :NAME" , //https://www.w3schools.com/sql/func_sqlserver_substring.asp
         resultClass = Company.class
 ),
 @NamedNativeQuery(
         name = "Company.returnNameCompany",
-        query = "SELECT *FROM COMPANY" + " WHERE COMPANY_NAME LIKE CONCAT('%', :COMPANYNAME, '%')",
+        query = "SELECT * FROM COMPANIES" + " WHERE COMPANY_NAME LIKE CONCAT('%', :COMPANYNAME, '%')",
         resultClass = Company.class
 )
         })

@@ -56,9 +56,12 @@ public class FacadeTestSuite {
 
         List<Employee> returnNameEmployee = facade.returnNameEmployee("Kovalsky");
         List<Company> returnNameCompany = facade.returnNameCompany("Software Machine");
+
         //Then
         assertEquals(1, returnNameCompany.size());
         assertEquals(1, returnNameEmployee.size());
+        System.out.println("fdsfsdfffffffdfsdfdfdsf"+returnNameCompany);
+        System.out.println(returnNameEmployee);
 
         //CleanUp
         try {

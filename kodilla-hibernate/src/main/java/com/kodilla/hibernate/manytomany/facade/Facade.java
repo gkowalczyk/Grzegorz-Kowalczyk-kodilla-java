@@ -21,7 +21,16 @@ public class Facade {
         return companyDao.returnNameCompany(companyName);
     }
 
+    @Override
+    public String toString() {
+        return "Facade{" +
+                "employeeDao=" + employeeDao +
+                ", companyDao=" + companyDao +
+                '}';
+    }
+
     public List<Employee> returnNameEmployee(String employeeName) {
         return employeeDao.returnNameEmployee(employeeName);
+
     }
 }
