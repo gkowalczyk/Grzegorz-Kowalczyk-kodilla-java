@@ -4,14 +4,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-
-@Transactional
-@Repository
+//ata Access Object – komponent dostarczający jednolity interfejs
+// do komunikacji
+// między aplikacją a źródłem danych (np. bazą danych czy plikiem).
+@Transactional//wywołanie metody w ramach jednej transakcji
+@Repository // intefejs użyty do tworzenia beana
 public interface TaskDao extends CrudRepository<Task, Integer> {
     List<Task> findByDuration(int duration);
 

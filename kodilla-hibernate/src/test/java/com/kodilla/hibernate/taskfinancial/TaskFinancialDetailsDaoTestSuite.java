@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.taskfinancial;
 
-import com.kodilla.hibernate.task.dao.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

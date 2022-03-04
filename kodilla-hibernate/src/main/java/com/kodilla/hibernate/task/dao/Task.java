@@ -31,6 +31,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "TASK")
+@Access(AccessType.PROPERTY)
 public class Task {
 
     private int id;

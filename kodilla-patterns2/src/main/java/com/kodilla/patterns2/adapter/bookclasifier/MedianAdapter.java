@@ -12,6 +12,8 @@ import java.util.Set;
 
 public class MedianAdapter extends MedianAdaptee implements Classifier {
 
+
+
     @Override
     public int publicationYearMedian(Set<BookA> bookSet) {
         Map<BookSignature, BookB> bookMap = new HashMap<>();
@@ -24,6 +26,7 @@ public class MedianAdapter extends MedianAdaptee implements Classifier {
         }
         return medianPublicationYear(bookMap);
     }
+
 }
 
 

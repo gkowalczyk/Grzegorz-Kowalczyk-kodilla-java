@@ -3,12 +3,9 @@ package com.kodilla.hibernate.task.dao;
 import com.kodilla.hibernate.taskfinancial.TaskFinancialDetails;
 import com.kodilla.hibernate.tasklist.dao.TaskList;
 import com.kodilla.hibernate.tasklist.dao.TaskListDao;
-import net.bytebuddy.agent.builder.AgentBuilder;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,9 +31,11 @@ import static org.junit.jupiter.api.Assertions.*;
         //when
 
         taskDao.save(task);
+
         //then
         int id = task.getId();
         Optional<Task> readTask = taskDao.findById(id);
+        System.out.println("ID===========" + id);
         assertTrue(readTask.isPresent());
         //cleanUp
         taskDao.deleteById(id);
@@ -52,9 +51,11 @@ import static org.junit.jupiter.api.Assertions.*;
         List<Task> readTasks = taskDao.findByDuration(duration);
         //Then
         assertEquals(1, readTasks.size());
-
+        System.out.println("duration=============="+ duration);
+        System.out.println("readtasks==============" + readTasks);
         //cleanUp
         int id = readTasks.get(0).getId();
+
         taskDao.deleteById(id);
     }
 

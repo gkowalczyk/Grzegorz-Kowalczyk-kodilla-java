@@ -24,9 +24,12 @@ public class Statistics implements BookStatitistics {
         for (Map.Entry<BookSignature, BookB> entry : books.entrySet()) {
             years[n] = entry.getValue().getYearOfPublication();
             n++;
+            System.out.println(years);
         }
         Arrays.sort(years);
+
         return years[years.length / 2];
+
     }
 
 }
