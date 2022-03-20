@@ -18,4 +18,5 @@ public class Customer {
         this.buyPredictor = buyPredictor;
     }
 
+
 }

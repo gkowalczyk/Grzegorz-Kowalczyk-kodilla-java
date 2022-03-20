@@ -1,8 +1,7 @@
 package com.kodilla.patterns.builder.checkers;
 
-import java.util.Arrays;
-
 public class Board {
+
 
 
     public final static int MIN_INDEX = 0;
@@ -15,12 +14,14 @@ public class Board {
             board[n] = new Figure[10];
         }
     }
-        public Figure getFigure(int x, int y) {
-            return board[x][y];
+
+    public Figure getFigure(int x, int y) {
+        return board[x][y];
     }
-        public void setFigure(Figure figure, int x, int y) {
+
+    public void setFigure(Figure figure, int x, int y) {
         board[x][y] = figure;
-        }
+    }
 
     @Override
     public String toString() {

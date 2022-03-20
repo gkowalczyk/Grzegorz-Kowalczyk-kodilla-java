@@ -39,6 +39,6 @@ public class PizzaOrderTestSuite {
         pizzaOrder = new ExtraHamDecorator(pizzaOrder);
         String description = pizzaOrder.getDescription();
         assertEquals("Basic pizza + extra cheese + extra ham", description);
-
+        System.out.println(description);
     }
 }

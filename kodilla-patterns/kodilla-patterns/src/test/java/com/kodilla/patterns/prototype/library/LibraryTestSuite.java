@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class LibraryTestSuite {
 
@@ -35,10 +34,11 @@ public class LibraryTestSuite {
         }
 
         //When
-        library.getBooks().remove(book1);
+       // library.getBooks().remove(book1);
 
         //Then
         System.out.println(library);
+        library.getBooks().remove(book1);
         System.out.println(shallowClone);
         System.out.println(deepClone);
         assertEquals(1, library.getBooks().size());

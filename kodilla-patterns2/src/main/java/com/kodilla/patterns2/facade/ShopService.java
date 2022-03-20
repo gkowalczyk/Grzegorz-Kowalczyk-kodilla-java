@@ -15,39 +15,40 @@ public class ShopService {
     private final Authenticator authenticator;
     private final ProductService productService;
 
-    //@Autowired
+    @Autowired
     public ShopService(Authenticator authenticator, ProductService productService) {
         this.authenticator = authenticator;
         this.productService = productService;
     }
 
-    public Long openOrder(Long userId){
-        if(authenticator.isAuthenticated(userId)){
-            Long maxOrder = (long)orders.stream()
-                    .mapToInt(o -> o.getOrderId().intValue())
-                    .max().orElse(0);
-            orders.add(new Order(maxOrder +1, userId, productService));
+    public Long openOrder(Long userId) {
+        if (authenticator.isAuthenticated(userId)) {
+            Long maxOrder = orders.stream()
+                    .mapToLong(o -> o.getOrderId())
+                    .max()
+                    .orElse(0);
+            orders.add(new Order(maxOrder + 1, userId, productService));
             return maxOrder + 1;
         } else {
             return -1L;
         }
     }
 
-    public void addItem(long orderId, Long productId, double qty){
+    public void addItem(long orderId, Long productId, double qty) {
         orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .forEach(o -> o.getItems().add(new Item(productId, qty)));
     }
 
-    public boolean removeItem(Long orderId, Long productId){
+    public boolean removeItem(Long orderId, Long productId) {
         Iterator<Order> orderIterator = orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .iterator();
-        while(orderIterator.hasNext()){
+        while (orderIterator.hasNext()) {
             Order theOrder = orderIterator.next();
             int orderSize = theOrder.getItems().size();
-            for(int n = 0; n < theOrder.getItems().size(); n++){
-                if(theOrder.getItems().get(n).getProductId().equals(productId)){
+            for (int n = 0; n < theOrder.getItems().size(); n++) {
+                if (theOrder.getItems().get(n).getProductId().equals(productId)) {
                     theOrder.getItems().remove(n);
                     return true;
                 }
@@ -56,22 +57,22 @@ public class ShopService {
         return false;
     }
 
-    public BigDecimal calculateValue(Long orderId){
+    public BigDecimal calculateValue(Long orderId) {
         Iterator<Order> orderIterator = orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .iterator();
-        while(orderIterator.hasNext()){
-            Order theOrder = orderIterator.next();
-            return theOrder.calculateValue();
+        while (orderIterator.hasNext()) {
+            Order order = orderIterator.next();
+            return order.calculateValue();
         }
         return BigDecimal.ZERO;
     }
 
-    public boolean doPayment(Long orderId){
+    public boolean doPayment(Long orderId) {
         Iterator<Order> orderIterator = orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .iterator();
-        while(orderIterator.hasNext()) {
+        while (orderIterator.hasNext()) {
             Order theOrder = orderIterator.next();
             if (theOrder.isPaid()) {
                 return true;
@@ -84,27 +85,27 @@ public class ShopService {
         return false;
     }
 
-    public boolean verifyOrder(Long orderId){
-        Iterator<Order> orderIterator = orders.stream()
-                .filter(o -> o.getOrderId().equals(orderId))
-                .iterator();
-        while(orderIterator.hasNext()){
-            Order theOrder = orderIterator.next();
-            boolean result = theOrder.isPaid();
-            Random generator = new Random();
-            if(!theOrder.isVerified()){
-                theOrder.setVerified(result && generator.nextBoolean());
-            }
-            return theOrder.isVerified();
-        }
+    public boolean verifyOrder(Long orderId) {
+      Iterator<Order> orderIterator = orders.stream()
+              .filter(o -> o.getOrderId().equals(orderId))
+              .iterator();
+      while (orderIterator.hasNext()) {
+          Order order = orderIterator.next();
+          boolean result = order.isPaid();
+          Random random = new Random();
+          if (!order.isVerified()) {
+              order.setVerified(result && random.nextBoolean());
+          }
+          return order.isVerified();
+      }
         return false;
     }
 
-    public boolean submitOrder(Long orderId){
+    public boolean submitOrder(Long orderId) {
         Iterator<Order> orderIterator = orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .iterator();
-        while(orderIterator.hasNext()) {
+        while (orderIterator.hasNext()) {
             Order theOrder = orderIterator.next();
             if (theOrder.isVerified()) {
                 theOrder.setSubmitted(true);
@@ -114,11 +115,11 @@ public class ShopService {
         return false;
     }
 
-    public void cancelOrder(Long orderId){
+    public void cancelOrder(Long orderId) {
         Iterator<Order> orderIterator = orders.stream()
                 .filter(o -> o.getOrderId().equals(orderId))
                 .iterator();
-        while(orderIterator.hasNext()) {
+        while (orderIterator.hasNext()) {
             Order theOrder = orderIterator.next();
             orders.remove(theOrder);
         }

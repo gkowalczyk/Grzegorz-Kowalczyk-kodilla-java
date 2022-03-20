@@ -8,7 +8,15 @@ public class BookSignature {
         this.signature = signature;
     }
 
+    @Override
+    public String toString() {
+        return "BookSignature{" +
+                "signature='" + signature + '\'' +
+                '}';
+    }
+
     public String getSignature() {
         return signature;
+
     }
 }

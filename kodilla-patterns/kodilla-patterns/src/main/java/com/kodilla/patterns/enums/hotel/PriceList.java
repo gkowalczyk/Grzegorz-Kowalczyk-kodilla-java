@@ -17,11 +17,11 @@ public class PriceList {
             Season.HOLIDAY, new BigDecimal(500)
     );
 
-    public static BigDecimal getSingleBedPrice(Season season) {
+    public static BigDecimal getSingleBedPrice(String season) {
         return singleBedPrices.get(season);
     }
 
-    public static BigDecimal getDoubleBedPrice(Season season) {
+    public static BigDecimal getDoubleBedPrice(String season) {
         return doubleBedPrices.get(season);
     }
 }

@@ -1,4 +1,5 @@
 package com.kodilla.patterns.singleton;
+//https://medium.com/@p.osinaga/using-singleton-in-java-b1b78cf640ed
 
 public class Logger {
 
@@ -19,7 +20,7 @@ public class Logger {
     // obiekt którego instancja jest przechowywana w pamięci podręcznej.
     public static Logger getInstance() {
         if (logger == null) {
-           logger = new Logger();
+           logger = new Logger();  // tworząc new zachowujemy jedną instancję obiektu
        }
         return logger;
     }

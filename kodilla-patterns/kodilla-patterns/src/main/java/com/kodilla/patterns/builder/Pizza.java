@@ -1,14 +1,13 @@
 package com.kodilla.patterns.builder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class Pizza {
 
     private final String bottom;
     private final String sauce;
-    private List<String> ingredients = new ArrayList<>();
+    private List<String> ingredients;
 
     public static class PizzaBuilder {
         private String bottom;

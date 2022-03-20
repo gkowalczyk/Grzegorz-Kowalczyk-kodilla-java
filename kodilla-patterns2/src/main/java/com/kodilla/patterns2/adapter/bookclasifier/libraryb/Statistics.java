@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class Statistics implements BookStatitistics {
+
     @Override
     public int averagePublicationYear(Map<BookSignature, BookB> books) {
         if (books.size() == 0)
@@ -24,12 +25,11 @@ public class Statistics implements BookStatitistics {
         for (Map.Entry<BookSignature, BookB> entry : books.entrySet()) {
             years[n] = entry.getValue().getYearOfPublication();
             n++;
-            System.out.println(years);
+
         }
         Arrays.sort(years);
-
+        //System.out.println(years[n-1]);
         return years[years.length / 2];
 
     }
-
 }

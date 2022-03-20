@@ -22,4 +22,13 @@ public class BookB {
     public int getYearOfPublication() {
         return yearOfPublication;
     }
+
+    @Override
+    public String toString() {
+        return "BookB{" +
+                "author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", yearOfPublication=" + yearOfPublication +
+                '}';
+    }
 }

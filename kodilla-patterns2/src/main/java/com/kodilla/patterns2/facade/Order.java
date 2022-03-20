@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Order {
     private ProductService productService;
     private final List<Item> items = new ArrayList<>();
@@ -13,6 +14,7 @@ public class Order {
     private boolean isPaid;
     private boolean isVerified;
     private boolean isSubmitted;
+
 
     public Order(Long orderId, Long userId, ProductService productService){
         this.orderId = orderId;
