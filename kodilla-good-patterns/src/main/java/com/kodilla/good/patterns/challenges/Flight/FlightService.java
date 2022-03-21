@@ -26,9 +26,9 @@ public final class FlightService {
     public List <List<Flight>> via (String from, String to) {
 
         List<Flight> flightsFrom = findAllFrom(from);
-        System.out.println(flightsFrom);
+
         List<Flight> flightsTo = findAllTo(to);
-        System.out.println(flightsTo);
+
         List<List<Flight>>  flights = new ArrayList<>();
 
         flightsFrom.stream()
