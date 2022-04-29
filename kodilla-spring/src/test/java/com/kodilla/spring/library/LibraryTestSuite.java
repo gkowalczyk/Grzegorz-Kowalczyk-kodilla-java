@@ -1,7 +1,6 @@
 package com.kodilla.spring.library;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,8 +11,8 @@ import java.util.Arrays;
 @SpringBootTest
 class LibraryTestSuite {
 
-    @Autowired//wyciąganie beanów przez metodę getBean()
-    private Library library;
+  //  @Autowired//wyciąganie beanów przez metodę getBean()
+   // private Library library;
 
     @Test
     void testLoadFromDb() {
@@ -44,7 +43,7 @@ class LibraryTestSuite {
     void testContext() {
         //Given
         ApplicationContext context =
-                new AnnotationConfigApplicationContext("com.kodilla.spring");
+                new AnnotationConfigApplicationContext(LibraryConfig.class);
         //When & Then
         System.out.println("=====Beans List:========");
         Arrays.stream(context.getBeanDefinitionNames())
@@ -54,8 +53,8 @@ class LibraryTestSuite {
     @Test
     void loadFromAndSaveDb() {
 
-library.loadFromDb();
-library.saveToDb();
+//library.loadFromDb();
+//library.saveToDb();
 
 
 

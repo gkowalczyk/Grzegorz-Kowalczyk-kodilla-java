@@ -15,6 +15,8 @@ public class BoardTestSuite {
        //Given
        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BoardConfig.class);
        Board board = applicationContext.getBean(Board.class);
+       //lub krócej z uzyciem @Autowired
+       // Board board;
        //When
        String taskToDo = "task to do";
        String taskInProgress = "task in progress";

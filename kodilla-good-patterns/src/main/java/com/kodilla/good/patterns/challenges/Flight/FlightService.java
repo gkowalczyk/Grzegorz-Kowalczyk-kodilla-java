@@ -34,6 +34,7 @@ public final class FlightService {
         flightsFrom.stream()
                 .filter(flight -> flightsTo.contains(new Flight(flight.getFlightTo(),to)))
                 //   GDA  ->> RZE
+
                 //   GDA  ->> KRA
                 //   KRA ->> RZE
                 .forEach(flight -> {

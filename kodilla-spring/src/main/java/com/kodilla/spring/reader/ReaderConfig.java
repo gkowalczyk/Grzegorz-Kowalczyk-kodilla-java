@@ -9,11 +9,10 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class ReaderConfig {
+
 @Autowired
 @Qualifier("book1")  // tworzenie domyślnej nazwy beana,który obiekt ma wstrzyknąć
     Book book;
-
-
 
     @Bean
     public Reader getReader() {

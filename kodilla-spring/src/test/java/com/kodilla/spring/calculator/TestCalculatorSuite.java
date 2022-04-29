@@ -18,8 +18,8 @@ public class TestCalculatorSuite {
     void addMethod() {
         //Given
         //ApplicationContext applicationContext =
-           //     new AnnotationConfigApplicationContext("com.kodilla.spring");
-       // Calculator calculator = applicationContext.getBean(Calculator.class);
+         //       new AnnotationConfigApplicationContext("com.kodilla.spring");
+        //Calculator calculator = applicationContext.getBean(Calculator.class);
         //When
         double val = calculator.add(1.5, 1.5);
         //Then

@@ -1,7 +1,8 @@
 package com.kodilla.hibernate.tasklist.dao;
 
-import com.kodilla.hibernate.task.dao.Task;
 import com.sun.istack.NotNull;
+import org.springframework.scheduling.config.Task;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class TaskList {
 
     @OneToMany(
             targetEntity = Task.class,
-            mappedBy = "taskList",
+            mappedBy = "tasklist",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

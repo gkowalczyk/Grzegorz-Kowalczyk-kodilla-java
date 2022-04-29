@@ -6,8 +6,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class Calculator {
 
-    @Autowired
+
+
+    @Autowired// wstrzykiwanie przez właściwość w klasie
     private Display display;
+
+    public Calculator(Display display) { // dla klasy CalculatorConfig tworzymy konstruktor
+        this.display = display;
+    }
 
     public double add(double a, double b) {
         double val = a + b;

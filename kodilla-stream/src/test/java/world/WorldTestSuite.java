@@ -1,16 +1,4 @@
-package world;
-
-import com.kodilla.stream.sand.SandStorage;
-import com.kodilla.stream.world.Continent;
-import com.kodilla.stream.world.Country;
-import com.kodilla.stream.world.World;
-import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//package world;
 
 //public class WorldTestSuite {
   //  @Test

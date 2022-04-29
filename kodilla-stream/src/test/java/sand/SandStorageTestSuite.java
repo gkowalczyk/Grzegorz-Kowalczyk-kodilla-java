@@ -34,7 +34,7 @@ public class SandStorageTestSuite {
     }
 
     @Test
-    void testGetSandBeansQuantityWithReduce() {
+    void testGetSandBeansQuantityWithReduce() throws InterruptedException {
         //Given
         List<SandStorage> continents = new ArrayList<>();
         continents.add(new Europe());
@@ -50,5 +50,6 @@ public class SandStorageTestSuite {
         assertEquals(expectedSand, totalSand);
 
 
+        }
+
     }
-}

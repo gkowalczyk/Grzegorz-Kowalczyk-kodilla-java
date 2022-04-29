@@ -5,6 +5,9 @@ public class StreamMain {
 
         System.out.println("generate even numbers");
         NumbersGenerator.generateEven(20);
+
+        Long validateTime = System.currentTimeMillis() + 3600;
+        System.out.println(validateTime);
     }
 
 
