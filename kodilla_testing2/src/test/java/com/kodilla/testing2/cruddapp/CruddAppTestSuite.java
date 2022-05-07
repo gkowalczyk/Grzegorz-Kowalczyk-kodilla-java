@@ -98,15 +98,11 @@ public class CruddAppTestSuite {
 
         result = driverTrello.findElements(By.xpath("//span")).stream()
                 .anyMatch(thespan -> thespan.getText().equals(taskName));
-
         return result;
-
-
     }
 
     private void deleteTaskFromCrudApp(String taskName) throws InterruptedException {
         driver.navigate().refresh();
-
 
         while (!driver.findElement(By.xpath("//select[1]")).isDisplayed()) ;
 
