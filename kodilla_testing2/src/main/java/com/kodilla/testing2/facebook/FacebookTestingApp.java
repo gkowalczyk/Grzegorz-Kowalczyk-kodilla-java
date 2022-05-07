@@ -16,6 +16,7 @@ public class FacebookTestingApp {
         Thread.sleep(2000);
 
         driver.findElement(By.xpath("//a[@data-testid=\"open-registration-form-button\"]")).click();
+       // driver.findElement(By.xpath("//a[text='Create new account']")).click();
         Thread.sleep(2000);
 
         Select selectDay = new Select(driver.findElement(By.xpath("//div[contains(@class, \"_5k_5\")]/span/span/select[1]")));
@@ -26,5 +27,6 @@ public class FacebookTestingApp {
 
         Select selectYear = new Select(driver.findElement(By.xpath("//div[contains(@class, \"_5k_5\")]/span/span/select[3]")));
         selectYear.selectByIndex(2);
+        driver.close();
     }
 }

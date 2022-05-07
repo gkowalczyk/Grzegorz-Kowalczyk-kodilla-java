@@ -18,6 +18,7 @@ public class StoredProcTestSuite {
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
 
+
         // When
         String sqlProcedureCall = "CALL UpdateVipLevels()";
         statement.execute(sqlProcedureCall);

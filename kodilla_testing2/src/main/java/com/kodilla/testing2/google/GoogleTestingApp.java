@@ -10,7 +10,7 @@ public class GoogleTestingApp {
     public static void main(String[] args) {
                WebDriver webDriver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
                webDriver.get("https://www.google.com");
-              webDriver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div")).click(); // [4]
+              //webDriver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div")).click(); // [4]
 
                WebElement searchField = webDriver.findElement(By.name(SEARCHFIELD));      // [5]
                searchField.sendKeys("Kodilla");
