@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class A_wolf_in_sheeps_clothing_test {
+public class WolfInShipsClothingTest {
 
     @Test
     public void testSomething() {
