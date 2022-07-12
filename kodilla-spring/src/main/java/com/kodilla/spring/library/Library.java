@@ -1,12 +1,10 @@
 package com.kodilla.spring.library;
 
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 // przykłąd z klasą konfiguracyjną LibraryConfig
-@Service
+//@Service
 public class Library {
     private final List<String> books = new ArrayList<>();
 

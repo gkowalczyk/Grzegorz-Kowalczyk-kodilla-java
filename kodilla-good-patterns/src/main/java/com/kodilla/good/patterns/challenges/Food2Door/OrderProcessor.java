@@ -5,7 +5,7 @@ public class OrderProcessor {
     public void processAll(OrderRequest orderRequest) {
 
         orderRequest.getProducts().entrySet().stream()
-                .map(l -> l.getKey().getFoodSupplier().process(orderRequest.getCustomer(), l.getKey(), l.getValue()))
+                .map(p -> p.getKey().getFoodSupplier().process(orderRequest.getCustomer(), p.getKey(), p.getValue()))
                 .forEach(System.out::println);
-    }
+        }
 }

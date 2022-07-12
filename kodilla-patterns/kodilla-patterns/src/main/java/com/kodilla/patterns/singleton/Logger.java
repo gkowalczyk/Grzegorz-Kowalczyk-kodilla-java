@@ -4,7 +4,7 @@ package com.kodilla.patterns.singleton;
 public class Logger {
 
     private String lastLog = "";
-    private static Logger logger = null;
+    private static Logger logger;
 
     public void log(String log) {
         lastLog = log;
@@ -19,9 +19,9 @@ public class Logger {
     // statycznej metodzie kreacyjnej zwracającej jakiś
     // obiekt którego instancja jest przechowywana w pamięci podręcznej.
     public static Logger getInstance() {
-        if (logger == null) {
+       if (logger == null) {
            logger = new Logger();  // tworząc new zachowujemy jedną instancję obiektu
-       }
+      }
         return logger;
     }
 }

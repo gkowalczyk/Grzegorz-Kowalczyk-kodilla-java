@@ -10,8 +10,8 @@ public class App {
         List<Flight> result2 = flightService.findAllFrom("WAW");
         List<Flight> result3 = flightService.findAllTo("WRO");
         List<List<Flight>> result4 = flightService.via("GDA", "RZE");;
-        System.out.println(result1);
-        System.out.println(result2);
-        System.out.println(result3);
+        //System.out.println(result1);
+        //System.out.println(result2);
+        System.out.println(result4);
     }
 }

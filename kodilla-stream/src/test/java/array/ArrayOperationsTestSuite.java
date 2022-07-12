@@ -23,6 +23,7 @@ public class ArrayOperationsTestSuite {
             double result = ArrayOperations.getAverage(arrays);
         //Then
             Assertions.assertEquals(3, result);
+
     }
 }
 

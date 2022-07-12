@@ -8,6 +8,6 @@ public final class NumbersGenerator {
         Stream.iterate(-4, n -> n + 1 )
                 .limit(max)
                 .filter(n -> n % 2 == 0)
-                .forEach(System.out::println);
+                .forEach(n-> System.out.println());
     }
 }

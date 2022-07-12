@@ -7,16 +7,11 @@ import com.kodilla.stream.portfolio.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -108,6 +103,7 @@ public class BoardTestSuite {
                 //  .filter( t-> t.getAssignedUser().getUsername().equals("developer1")) //odwołanie tylko do username
                 .filter(t -> t.getAssignedUser().equals(user)) // odwołanie do username i realname
                 .collect(toList());
+        System.out.println(tasks);
         //Then
         assertEquals(2, tasks.size());
         assertEquals(user, tasks.get(0).getAssignedUser());
@@ -130,6 +126,7 @@ public class BoardTestSuite {
                 .flatMap(t1 -> t1.getTasks().stream())
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
                 .collect(toList());
+        System.out.println(tasks);
         //Then
         assertEquals(1, tasks.size());
         assertEquals("HQLs for analysis", tasks.get(0).getTitle());

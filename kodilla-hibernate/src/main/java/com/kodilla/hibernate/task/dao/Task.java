@@ -30,7 +30,7 @@ import java.util.Date;
 )
 
 @Entity
-@Table(name = "TASK")
+@Table(name = "TASKS")
 @Access(AccessType.PROPERTY)
 public class Task {
 

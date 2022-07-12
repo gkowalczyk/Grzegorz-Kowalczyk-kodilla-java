@@ -17,7 +17,7 @@ public final class Library2 {
 // więc najpierw bean klasy LibraryDbController, a następnie
 // wstrzyknął go do
 // konstruktora beana klasy Library. Całkowicie bez naszego udziału
-    @Autowired
+@Autowired
     public void setLibraryDbController(LibraryDbController2 libraryDbController) {
         this.libraryDbController = libraryDbController;
     }

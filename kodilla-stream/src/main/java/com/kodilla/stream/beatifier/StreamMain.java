@@ -9,6 +9,8 @@ public class StreamMain {
         poemBeautifier.beautify("ALA MA KOTA", (text -> text + "\n" + "ORAZ PSA"));
         poemBeautifier.beautify("ALA MA KOTA", (text -> "Marcin oraz" + text));
         poemBeautifier.beautify("ALA MA KOTA", (text -> text.concat("klarę")));
+
+
     }
 
 }

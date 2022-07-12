@@ -14,7 +14,7 @@ public class HotelApp {
 
         Season season = Season.HOLIDAY;
 
-        System.out.println(season);
+       // System.out.println(season);
     }
 
 }

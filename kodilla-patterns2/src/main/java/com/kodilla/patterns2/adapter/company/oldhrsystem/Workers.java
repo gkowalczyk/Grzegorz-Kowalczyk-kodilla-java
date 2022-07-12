@@ -2,6 +2,7 @@ package com.kodilla.patterns2.adapter.company.oldhrsystem;
 
 public class Workers {
 
+
     private String[][] workers = {
             {"67032906720", "John", "Smith"},
             {"62081612187", "Ivone", "Novak"},
@@ -31,23 +32,25 @@ public class Workers {
         return salaries;
     }
 }
+/*
+    public static void main(String[] args) {
 
- //   public static void main(String[] args) {
-     //   String[][] workers = {
-       //         {"67032906720", "John", "Smith"},
-         //       {"62081612187", "Ivone", "Novak"},
-            //    {"75021310799", "Jessie", "Pinkman"},
-         //       {"75012200766", "Walter", "White"},
-         //       {"75073006831", "Clara", "Lanson"}};
+        String[][] workers = {
+                {"67032906720", "John", "Smith"},
+                {"62081612187", "Ivone", "Novak"},
+                {"75021310799", "Jessie", "Pinkman"},
+                {"75012200766", "Walter", "White"},
+                {"75073006831", "Clara", "Lanson"}};
 
-      //  for (int rzad = 0; rzad < workers.length; rzad++) {
-           // System.out.println(workers.length);
-        //    for (int kolumna = 0; kolumna < workers[rzad].length; kolumna++) {
-            //    System.out.println(workers[rzad].length);
-             //  System.out.println(workers[rzad][0]);
+        for (int kolumna = 0; kolumna < workers.length; kolumna++) {
+            for (int rząd = 0; rząd < workers[rząd].length; rząd++) {
+                System.out.println(workers[kolumna][rząd]);
+                //  System.out.println(workers[rzad][0]);
                 //System.out.println(workers.length);
-          //  }
-          //  System.out.println();
-       // }
-    //}
- //  }
+            }
+            //  System.out.println();
+        }
+    }
+}
+
+ */

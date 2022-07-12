@@ -82,13 +82,13 @@ public class CruddAppTestSuite {
         driverTrello.get(TRELLO_URL);
 
 
-        driverTrello.findElement(By.id("user")).sendKeys("");
-        driverTrello.findElement(By.id("password")).sendKeys("");
+        driverTrello.findElement(By.id("user")).sendKeys("grzegorzkowalczyk1989@gmail.com");
+        driverTrello.findElement(By.id("password")).sendKeys("Kulamula123");
         WebElement el = driverTrello.findElement(By.id("login"));
         el.submit();
 
         Thread.sleep(2000);
-        driverTrello.findElement(By.id("password")).sendKeys("");
+        driverTrello.findElement(By.id("password")).sendKeys("Kulamula123");
         driverTrello.findElement(By.id("login-submit")).submit();
         Thread.sleep(2000);
         driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
@@ -112,6 +112,7 @@ public class CruddAppTestSuite {
                 .filter(anyform -> anyform.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
                 .forEach(theForm -> {
                     WebElement deleteTaskName =
+                            //theForm.findElement(By.xpath(".//button[contains(@class, \"delete-button\")]"));
                             theForm.findElement(By.xpath(".//button[@data-task-delete-button]"));
                     deleteTaskName.click();
                 });

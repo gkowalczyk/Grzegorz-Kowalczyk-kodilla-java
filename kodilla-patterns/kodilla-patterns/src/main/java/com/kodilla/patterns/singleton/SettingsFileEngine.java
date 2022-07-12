@@ -1,9 +1,7 @@
 package com.kodilla.patterns.singleton;
 
-import com.kodilla.patterns.enums.hotel.Season;
-
 public enum SettingsFileEngine {
-    INSTANCE;
+    INSTANCE;// jedyna instancja enum
 
     private String filename = "";
 

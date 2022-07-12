@@ -7,7 +7,7 @@ public final class Pizza {
 
     private final String bottom;
     private final String sauce;
-    private List<String> ingredients;
+    private List<String> ingredients= new ArrayList<>();
 
     public static class PizzaBuilder {
         private String bottom;
@@ -22,8 +22,8 @@ public final class Pizza {
             this.sauce = sauce;
             return this;
     }
-        public PizzaBuilder ingredients(String ingredients) {
-            this.ingredients.add(ingredients);
+        public PizzaBuilder ingredients(String ingredient) {
+            this.ingredients.add(ingredient);
             return this;
         }
         public Pizza build() {

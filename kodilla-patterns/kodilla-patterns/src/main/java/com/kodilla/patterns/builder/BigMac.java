@@ -7,10 +7,10 @@ public final class BigMac {
 
     private final String roll;
     private final int burgers;
-    private List<String> ingredients = new ArrayList<>();
+    private List<String> ingredients;
     private final String sauce;
 
-   public BigMac(final String roll, final int burgers, List<String> ingredients, final String sauce) {
+   public BigMac(final String roll, final int burgers, final List<String> ingredients, final String sauce) {
         this.roll = roll;
         this.burgers = burgers;
         this.ingredients = new ArrayList<>(ingredients);

@@ -11,7 +11,7 @@ public class SearchingFlight {
         result.put("WAW", true);
         result.put("KRA", true);
         result.put("RZE", true);
-        result.put("GDA", false);
+        result.put("GDA", true);
         return result;
     }
 
@@ -21,7 +21,7 @@ public class SearchingFlight {
             throw new RouteNotFoundException();
         }
         if (airportMap().containsKey(flight.getArrivalAirport()) && (airportMap().containsKey(flight.getDepartureAirport()) &&
-                (airportMap().get(flight.getArrivalAirport())))) {
+                (airportMap().get(flight.getArrivalAirport())) && (airportMap().get(flight.getDepartureAirport())))) {
             System.out.println("You can fly to: " + flight.getArrivalAirport() + " from:" + flight.getDepartureAirport());
         } else {
             System.out.println("Find different directions");

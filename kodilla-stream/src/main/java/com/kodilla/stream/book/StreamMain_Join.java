@@ -11,7 +11,10 @@ public class StreamMain_Join {
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
         System.out.println(theResultStringBooks);
+
+
+
     }
 
-
 }
+

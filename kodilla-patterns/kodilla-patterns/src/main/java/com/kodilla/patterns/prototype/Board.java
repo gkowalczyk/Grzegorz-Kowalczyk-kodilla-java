@@ -52,15 +52,15 @@ public class Board extends Prototype<Board>{
         return super.clone();
     }
     public Board deepCopy() throws CloneNotSupportedException {
-        Board cloneBoard = super.clone();
-        cloneBoard.lists = new HashSet<>();
-        for (TaskList taskList : lists) {
-            TaskList cloneList = new TaskList(taskList.getName());
-            for (Task task : taskList.getTasks()) {
-                cloneList.getTasks().add(task);
-            }
-            cloneBoard.getLists().add(cloneList);
-        }
-        return cloneBoard;
-    }
+       Board cloneBoard = super.clone();
+       cloneBoard.lists = new HashSet<>();
+     for (TaskList taskList: lists) {
+           TaskList cloneList = new TaskList(taskList.getName());
+           for (Task task: taskList.getTasks()) {
+               taskList.getTasks().add(task);
+                          }
+           cloneBoard.getLists().add(cloneList);
+       }
+return cloneBoard;
+       }
 }

@@ -17,6 +17,5 @@ public class SalaryAdapterTestSuite {
         System.out.println(totalSalary);
         System.out.println(workers);
         assertEquals(totalSalary,27750,0);
-
     }
 }

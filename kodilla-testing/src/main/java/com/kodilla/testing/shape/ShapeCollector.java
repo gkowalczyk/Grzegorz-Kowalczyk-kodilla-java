@@ -1,24 +1,23 @@
 package com.kodilla.testing.shape;
-import com.kodilla.testing.forum.ForumComment;
 
 import java.util.ArrayList;
 
 public class ShapeCollector {
-  private Shape shape;
+  //private Shape shape;
 
     private ArrayList<Shape> figureShape = new ArrayList<Shape>();
 
-  public ShapeCollector(Shape shape) {
-      this.shape = shape;
-  }
+ // public ShapeCollector(Shape shape) {
+    //  this.shape = shape;
+ // }
 
-    public ShapeCollector() {
+  //  public ShapeCollector() {
 
-    }
+   // }
 
-    public Shape getShape() {
-     return shape;
- }
+   // public Shape getShape() {
+   //  return shape;
+ //}
 //Czy ten konstruktor jest tu potrzebny skoro mamy metodę addFigure??;
 
     public ArrayList<Shape> getFigureShape() {

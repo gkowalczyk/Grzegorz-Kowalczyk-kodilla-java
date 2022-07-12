@@ -10,7 +10,7 @@ public class App {
         OrderRequest orderRequest = new OrderRequest(
                 customer1,
                 Map.of(
-                        new Product("beef", extraFoodShop), 4
+                        new Product("beef", extraFoodShop), 2
                 )
         );
         orderProcessor.processAll(orderRequest);

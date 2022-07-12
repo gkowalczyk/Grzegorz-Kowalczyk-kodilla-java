@@ -19,4 +19,6 @@ include 'kodilla-hibernate'
 include 'kodilla-patterns2'
 include 'kodilla-patterns2'
 include 'kodilla-patterns2'
+include 'kodilla_testing2'
+include 'exercises'
 

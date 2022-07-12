@@ -18,6 +18,8 @@ public class FirstFactorialClass {
 
         Scanner s = new Scanner(System.in);
         System.out.print(FirstFactorial(Integer.parseInt(s.nextLine())));
+        System.gc();
     }
 
 }
+

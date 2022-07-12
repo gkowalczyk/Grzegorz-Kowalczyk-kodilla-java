@@ -31,8 +31,8 @@ public final class FlightService {
 
         List<List<Flight>>  flights = new ArrayList<>();
 
-        flightsFrom.stream()
-                .filter(flight -> flightsTo.contains(new Flight(flight.getFlightTo(),to)))
+        flightsFrom.stream()//zwracamy listy
+                .filter(flight -> flightsTo.contains(new Flight(flight.getFlightTo(),to))) //
                 //   GDA  ->> RZE
 
                 //   GDA  ->> KRA

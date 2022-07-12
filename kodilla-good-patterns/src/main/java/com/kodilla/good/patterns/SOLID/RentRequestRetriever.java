@@ -12,5 +12,4 @@ public class RentRequestRetriever {
 
       return new RentRequest(user, rentFrom, rentTo);
 }
-
 }

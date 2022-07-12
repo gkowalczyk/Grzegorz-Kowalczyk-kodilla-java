@@ -1,7 +1,5 @@
 package com.kodilla.testing.shape;
 
-import com.kodilla.testing.shape.Circle;
-import com.kodilla.testing.shape.ShapeCollector;
 import org.junit.jupiter.api.*;
 
 
@@ -53,9 +51,9 @@ public class ShapeCollectorTestSuite {
         Circle circle = new Circle(2);
     //When
         shapeCollector.getFigureShape().add(0, circle);
-        //System.out.println(shapeCollector.getFigureShape().get(0));
+      // System.out.println(shapeCollector.getFigureShape().get(0));
     //Then
-        Assertions.assertEquals(shapeCollector.getFigure(0), shapeCollector.getFigureShape().get(0));
+        Assertions.assertEquals(shapeCollector.getFigure(0).getShapeName(), "Circle");
     }
     @Test
     void showFigure() {
