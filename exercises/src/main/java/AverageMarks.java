@@ -46,6 +46,8 @@ public class AverageMarks {
 
 
         //alternatywa:
+
+
         double maxValue = Collections.max(marks);
         double minValue = Collections.min(marks);
 
