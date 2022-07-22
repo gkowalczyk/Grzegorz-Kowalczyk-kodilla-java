@@ -13,7 +13,7 @@ public class SumArrays {
         //II solution
         double sumArray = 0;
         for (double value : numbers) {
-            sumArray = sumArray+ value ;
+            sumArray = sumArray + value ;
         }
         return sumArray;
     }
