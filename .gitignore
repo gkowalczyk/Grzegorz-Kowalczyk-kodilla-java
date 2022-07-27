@@ -3,7 +3,7 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
-!**/src/test/**/build/
+!**/src/DocumentItem/**/build/
 **/out/ **/build/
 
 ### STS ###
@@ -16,7 +16,7 @@ build/
 .sts4-cache
 bin/
 !**/src/main/**/bin/
-!**/src/test/**/bin/
+!**/src/DocumentItem/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
@@ -25,7 +25,7 @@ bin/
 *.ipr
 out/
 !**/src/main/**/out/
-!**/src/test/**/out/
+!**/src/DocumentItem/**/out/
 
 ### NetBeans ###
 /nbproject/private/
