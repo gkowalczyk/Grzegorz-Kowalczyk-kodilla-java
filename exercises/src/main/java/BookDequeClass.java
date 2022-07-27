@@ -66,6 +66,7 @@ public class BookDequeClass {
         while (iterator.hasNext()) {
             Book1 current = iterator.next();
             System.out.println(current);
+            System.out.println();
         }
     }
 }

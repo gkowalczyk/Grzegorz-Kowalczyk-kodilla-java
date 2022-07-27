@@ -36,6 +36,8 @@ public class OddNumbersFromCollectionsTestSuite {
 
         //Then
         Assertions.assertEquals(oddNumbersFromCollections.exterminate(emptyList).size(), 0);
+        System.out.println(emptyList.getClass());
+        System.out.println(OddNumbersFromCollections.class);
     }
 }
 

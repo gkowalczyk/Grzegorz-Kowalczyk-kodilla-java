@@ -21,6 +21,4 @@ public class FirstReverse {
         Scanner s = new Scanner(System.in);
         System.out.print(FirstReverse(s.nextLine()));
     }
-
-
 }
