@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,22 +16,33 @@ public class OddNumbersFromCollectionsTestSuite {
         //Given
         OddNumbersFromCollections oddNumbersFromCollections = new OddNumbersFromCollections();
 
-
         //When
         List<Integer> list = new ArrayList<>();
         Stream.iterate(1, n -> n + 1)
                 .limit(100L)
                 .forEach(n -> list.add(n));
-
         //Then
-        Assertions.assertEquals(oddNumbersFromCollections.exterminate(list).size(), 50);
+        Assertions.assertEquals(oddNumbersFromCollections.exterminate(list).size(),
+                50);
     }
+
+    @Test
+    void OddNumbersFromCollectionsWithArray() {
+        //Given
+        OddNumbersFromCollections oddNumbersFromCollections = new OddNumbersFromCollections();
+
+        //When
+        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        List<Integer> listArrays = Arrays.asList(array);
+        System.out.println(listArrays);
+        //Then
+        Assertions.assertEquals(oddNumbersFromCollections.exterminate(listArrays).size(),5);
+                    }
 
     @Test
     void OddNumbersFromEmptyCollections() {
 //Given
         OddNumbersFromCollections oddNumbersFromCollections = new OddNumbersFromCollections();
-
         //When
         List<Integer> emptyList = new ArrayList<>();
 
