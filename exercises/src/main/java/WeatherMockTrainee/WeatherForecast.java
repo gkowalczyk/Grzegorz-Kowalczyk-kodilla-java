@@ -35,7 +35,7 @@ List<Double> doubleList = calculateForecast()
         .sorted()
         .collect(Collectors.toList());
 
-return  doubleList.size() % 2 ==0 ? (doubleList.get(doubleList.size() / 2 - 1) + doubleList.get(doubleList.size() /2 )) /2 : doubleList.get(doubleList.size()/2);
+return  doubleList.size() % 2 == 0 ? (doubleList.get(doubleList.size() / 2 - 1) + doubleList.get(doubleList.size() / 2 )) / 2 : doubleList.get(doubleList.size() / 2);
     }
 }
 
