@@ -24,6 +24,7 @@ public class NumberReverse {
         // Getting the list view of Array
        // List<String> list = Arrays.asList(a);
 
+    //https://www.geeksforgeeks.org/split-string-java-examples/
 
 
     public static String NumberReverse(String str) {
@@ -34,7 +35,7 @@ public class NumberReverse {
             Collections.reverse(stringList);
 
             return stringList.stream()
-                    .collect(Collectors.joining(","));
+                    .collect(Collectors.joining(" "));
 
         } catch (UnsupportedOperationException e) {
            return "exception:" + e;
@@ -46,4 +47,12 @@ public class NumberReverse {
             System.out.print(NumberReverse(s.nextLine()));
         }
     }
+
+
+
+
+
+
+
+
 

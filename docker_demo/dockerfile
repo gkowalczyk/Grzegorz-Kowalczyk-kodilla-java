@@ -1,0 +1,6 @@
+FROM openjdk:20-ea-9-jdk-bullseye
+ADD target/docker_demo-0.0.1-SNAPSHOT.jar .
+EXPOSE 8000
+CMD java -jar docker_demo-0.0.1-SNAPSHOT.jar .
+
+
