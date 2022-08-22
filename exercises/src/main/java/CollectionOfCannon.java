@@ -8,7 +8,7 @@ public class CollectionOfCannon {
     //Jeśli armata nie jest załadowana, zostanie wyświetlona informacja (System.out.println) o braku kuli w armacie, a następnie kula zostanie załadowana do tej armaty.
     //
     //Część 2
-    //W metodzie main klasy Program utwórz kolekcję typu LinkedList do przechowywania armat.
+    //W metodzie ain klasy Program utwórz kolekcję typu LinkedList do przechowywania armat.
     //
     //Dodaj kilka obiektów klasy Cannon do kolekcji, a następnie – używając pętli for – załaduj wszystkie armaty.
 private boolean loaded;
