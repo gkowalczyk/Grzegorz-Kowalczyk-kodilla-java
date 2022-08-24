@@ -3,7 +3,7 @@ import java.util.List;
 
 public class CollectionOfClocks {
 
-    //W metodzie main klasy Program utwórz klasę Clock (z ang. zegar)
+    //W metodzie ain klasy Program utwórz klasę Clock (z ang. zegar)
     // i kilka obiektów tej klasy.
     //
     //Utwórz również kolekcję typu LinkedList do przechowywania zegarów i
