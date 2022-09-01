@@ -92,7 +92,7 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach(new Consumer<String>() {
             @Override
             public void accept(String s) {
@@ -113,7 +113,7 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach((String s) -> System.out.println(s));
 
     }
@@ -129,7 +129,7 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach((name) -> System.out.println(name));
     }
 
@@ -144,7 +144,7 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach(name -> System.out.println(name));
     }
 
@@ -159,7 +159,7 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach(System.out::println);
     }
 
@@ -168,7 +168,7 @@ public class FunctionalInterface {
 
     @Test
     public void classicProgrammingExample() {
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         long counter = 0;
         for (String name : names) {
             if (name.length() > 6) {
@@ -181,7 +181,7 @@ public class FunctionalInterface {
     @Test
     public void classicProgrammingExampleSolution() {
 
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         long counter = names.stream()
                 .filter(name -> name.length() > 6)
                 .count();
@@ -192,7 +192,7 @@ public class FunctionalInterface {
     @Test
     public void classicProgrammingExampleSolution1() {
 
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         long counter = names.stream()
                 .filter(name -> name.length() > 6)
                 .count();
@@ -232,7 +232,7 @@ public class FunctionalInterface {
 
     @Test
     void ListAndSort() {
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia", "Ola");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia", "Ola");
 
         List<String> collect = names.stream()
                 .filter(s -> s.length() > 2)
@@ -245,7 +245,7 @@ public class FunctionalInterface {
 
     @Test
     public void mapExample() {
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.stream()
                 .map(String::length)
                 .forEach(System.out::println);
@@ -253,7 +253,7 @@ public class FunctionalInterface {
 
     @Test
     void limitAndSort() {
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Łukasz", "Karol", "Anna", "Marcysia");
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
 
         String collect = names.stream()
                 .filter(s -> s.length() > 2)

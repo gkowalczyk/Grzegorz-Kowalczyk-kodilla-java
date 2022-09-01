@@ -1,6 +1,7 @@
 import ShapeCollections.Circle;
 import ShapeCollections.ShapeCollector;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 //Zadanie: Kolekcjonujemy figury (i testujemy to).
 //Celem zadania jest przetestowanie klasy, którą musisz napisać, o nazwie – powiedzmy – ShapeCollections.ShapeCollector, przy następujących założeniach:
 //
@@ -16,7 +17,7 @@ import org.junit.jupiter.api.*;
 //zwracającą nazwy wszystkich figur w postaci jednego Stringa.
 //Aby przygotować rozwiązanie zadania:
 //
-//W katalogu src/main/java utwórz pakiet com.kodilla.testing.shape.
+//W katalogu src/ain/java utwórz pakiet com.kodilla.testing.shape.
 //W stworzonym pakiecie utwórz interfejs ShapeCollections.Shape, zawierający dwie metody: getShapeName() oraz getField().
 //Utwórz klasy reprezentujące poszczególne figury – posiadające już właściwe implementacje metod interfejsu.
 //Utwórz klasę ShapeCollections.ShapeCollector z metodami:
@@ -29,7 +30,7 @@ import org.junit.jupiter.api.*;
 
 public class ShapeCollectorTestSuite {
 
-    @Test
+   @Test
     void showFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
