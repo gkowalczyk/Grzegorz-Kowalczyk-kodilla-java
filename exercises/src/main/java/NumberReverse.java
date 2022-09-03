@@ -31,7 +31,7 @@ public class NumberReverse {
 
         try {
 
-            List<String> stringList = Arrays.asList(str.split(" "));
+            List<String> stringList = Arrays.asList(str.split(","));
             Collections.reverse(stringList);
 
             return stringList.stream()
