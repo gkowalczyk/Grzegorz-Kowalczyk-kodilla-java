@@ -18,21 +18,31 @@ class RunLenght {
 
     public static String StringChallenge(String str) {
 
-        for (int chars = 0; chars < str.length(); chars++) {
+        for (int n = 0; n < str.length(); n++) {
+         //  System.out.println("                     petla for n :" + n);
+
+
             int counter = 1;
-            while (chars < str.length() - 1
-                    && str.charAt(chars) == str.charAt(chars + 1)) {
+
+            while (n < str.length() -1  // -1  bo mamy przy 5 przebiegu np dla "aaabbcc" nie mam wartości n+1
+                    && str.charAt(n) == str.charAt(n + 1)) {
+               // System.out.println("n0:" + n);
                 counter++;
-                chars++;
+                n++;
+               //System.out.println("n1:" + n);
+              //  System.out.println("char(n):" + str.charAt(n));
+               // System.out.println("counter:" + counter);
+
             }
-            System.out.print(counter + "" + str.charAt(chars));
+            System.out.println(counter + "" + str.charAt(n));
         }
         return "";
     }
 
+
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.print(StringChallenge(s.nextLine()));
+        System.out.print(StringChallenge("aaabbc"));
     }
 }
 

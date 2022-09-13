@@ -8,7 +8,7 @@ public class EncodeString {
         // String charAr = "KOT";
         // String.valueOf(charAr.charAt(1));
         //System.out.println(String.valueOf(charAr.charAt(1)));
-        System.out.println("RESULT:" + encodeString.encodeString("K"));
+        System.out.println("RESULT:" + encodeString.encodeString("KOT"));
 
     }
 
