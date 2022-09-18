@@ -13,6 +13,17 @@
 //Output: love
 
 
+//Example
+//@Test
+//public void whenSplit_thenCorrect() {
+//    String s = "Welcome to Baeldung";
+//    String[] expected1 = new String[] { "Welcome", "to", "Baeldung" };
+//    String[] expected2 = new String[] { "Welcome", "to Baeldung" };
+//
+//    assertArrayEquals(expected1, s.split(" "));
+//    assertArrayEquals(expected2, s.split(" ", 2));
+//}
+
 public class LongestWord {
 
     public static String LongestWord(String sen) {
@@ -32,6 +43,6 @@ public class LongestWord {
     }
 
     public static void main(String[] args) {
-        System.out.println(LongestWord("Hello world123 567"));
+        System.out.println(LongestWord("fun&!! time"));
     }
 }
