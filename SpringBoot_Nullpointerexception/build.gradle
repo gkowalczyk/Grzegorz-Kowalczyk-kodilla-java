@@ -14,21 +14,49 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    testCompileOnly 'org.projectlombok:lombok:1.18.22'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
-    testImplementation group: 'com.h2database', name: 'h2', version: '1.3.148'
-}
+compileJava {
+    options.compilerArgs << '-parameters'
 
 
-tasks.named('test') {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+        implementation 'io.springfox:springfox-swagger2:2.9.2'
+        implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+        implementation 'io.springfox:springfox-swagger2:2.9.2'
+        implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+        testImplementation group: 'com.h2database', name: 'h2', version: '1.3.148'
+    }
+    test {
+        useJUnitPlatform()
+    }
+
+    task generatePostsAndComments() {
+        doLast {
+            File dataSql = file("src/main/resources/data.SQL")
+            dataSql.write("")
+            //posty
+            for (int i = 1; i <= 100; i++) {
+                dataSql.append("insert into post(id, title, content, created) " +
+                        "values (${i}, 'Test post ${i}', 'Content ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+            }
+            //komentarze
+            for (int i = 1; i <= 100; i++) {
+                int postId = 1 + i / 10
+                dataSql.append("insert into comment(id, post_id, content, created) " +
+                        "values (${i}, ${postId}, 'Comment ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+            }
+        }
+    }
 }
