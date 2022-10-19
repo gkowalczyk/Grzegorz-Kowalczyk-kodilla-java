@@ -3,7 +3,7 @@ package FunctionalInterfaceExample;
 public class MainSumExecute {
     public static void main(String[] args) {
 
-        Sum sum = (a, b) -> a + b;  //(a,b) parametry metody   a+b - ciao metody
+        Sum sum = (a, b) -> a + b;  //(a,b) parametry metody   a+b - ciało metody
         //
         System.out.println(sum.calculate(1, 3));
     }

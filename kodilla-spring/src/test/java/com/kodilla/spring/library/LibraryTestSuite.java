@@ -1,6 +1,5 @@
 package com.kodilla.spring.library;
 
-import com.kodilla.spring.library.InToPropClasses.LibraryDbController3;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -44,7 +43,7 @@ class LibraryTestSuite {
     void testContext() {
         //Given
         ApplicationContext context =
-                new AnnotationConfigApplicationContext(LibraryDbController3.class);
+                new AnnotationConfigApplicationContext(LibraryConfig.class);
         //When & Then
         System.out.println("=====Beans List:========");
         Arrays.stream(context.getBeanDefinitionNames())

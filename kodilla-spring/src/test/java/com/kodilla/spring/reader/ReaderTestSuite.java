@@ -7,7 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @SpringBootTest
 public class ReaderTestSuite {
-
+/*@Autowired
+Reader reader;*/
     @Test
     void testRead() {
         //Given

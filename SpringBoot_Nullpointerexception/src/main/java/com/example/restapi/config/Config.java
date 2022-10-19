@@ -13,12 +13,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //https://nullpointerexception.pl/hibernate-i-problem-n-plus-1-zapytan/
 
 
-
-
-
 @Configuration
 @EnableSwagger2
 public class Config {
+
+   /* @Autowired
+    private ObjectMapper objectMapper;
+
+    void customize() {    możemy customizować ustawienia w springu
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);*/
+    //}
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

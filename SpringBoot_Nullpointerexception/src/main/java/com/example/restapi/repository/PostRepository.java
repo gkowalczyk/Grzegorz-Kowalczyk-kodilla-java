@@ -15,11 +15,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Override
     Optional<Post> findById(Long id);
 
+
+
+
 //1
     //https://www.baeldung.com/spring-data-jpa-query
     //JPQL to skrót od Java Persistence Query Language
     //@Query("select p FROM Post p  where title = :title")
     //List<Post> findAllByTitle(@Param("title") String title);
+
+    // używamy jeśli potrzeba połączenia table z db
 
 //2
   // List<Post> findAllByTitle(String title);
@@ -58,15 +63,17 @@ public interface PostRepository extends JpaRepository<Post, Long> {
  // 8  jesli musimy pobrać post i comment stronicujemy wykonując 2 zapytania , pierwsze
     //post , a później comment
 
-    @Query("Select p From Post p")
+   /* @Query("Select p From Post p")
             // left join wszystkie posty bez komentarzy
     List<Post> findAllPosts(Pageable p); // własna metod
+*/
 
+    //9   stronnicowanie dwóch tabel  i sortowanie wyników , njbardziej
+// wydajny sposób
 
-
-
-
-
+     @Query("Select p From Post p")
+            // left join wszystkie posty bez komentarzy
+     List<Post> findAllPosts(Pageable p); // własna metod
 
 
 }

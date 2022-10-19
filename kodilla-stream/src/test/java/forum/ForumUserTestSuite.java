@@ -50,6 +50,7 @@ public class ForumUserTestSuite {
         assertTrue(user1.getLocationOfFriend().contains("Washington"));
         assertTrue(user1.getLocationOfFriend().contains("Miami"));
         assertFalse(user1.getLocationOfFriend().contains("Orlando"));
+        System.out.println(user1.getLocationOfFriend());
     }
 
     @Test
@@ -92,6 +93,7 @@ public class ForumUserTestSuite {
         assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Washington"));
         assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Miami"));
         assertFalse(user1.getLocationsOfFriendsOfFriends().contains("Orlando"));
+        System.out.println(user1.getLocationsOfFriendsOfFriends());
         }
 @Test
     void testGetValueToPay() {

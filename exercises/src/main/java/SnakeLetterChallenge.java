@@ -46,9 +46,10 @@ public class SnakeLetterChallenge {
 
         Random random = new Random();
         int number = random.nextInt(50);
+        String charA = "a";
 
         for (int n = 0; n < 50; n++) {
-            String charA = "a";
+            //String charA = "a";
 
             for (int i = 0; i < random.nextInt(50); i++) {
 

@@ -4,18 +4,15 @@ import com.kodilla.testing.libray.Book;
 import com.kodilla.testing.libray.BookLibrary;
 import com.kodilla.testing.libray.LibraryDatabase;
 import com.kodilla.testing.libray.LibraryUser;
-import com.kodilla.testing.weather.stub.Temperatures;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -84,7 +81,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks10 = bookLibrary.listBooksWithCondition("An");
         //Then
         assertEquals(0,theListOfBooks10.size());
-        verify(libraryDatabaseMock,times(0)).listBooksWithCondition(anyString());
+        verify(libraryDatabaseMock,times(0)).listBooksWithCondition("An");
     }
     private List<Book> listBookInHandOfGenerate(int booksInHandOf) {
         List<Book> resultList = new ArrayList<>();

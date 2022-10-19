@@ -1,6 +1,6 @@
 package FunctionalInteface;
 
-public final class Student {
+public final class Student implements Runnable {
 
     private final String name;
     private final  String surname;
@@ -22,5 +22,10 @@ public final class Student {
 
     public int getAge() {
         return age;
+    }
+
+    @Override
+    public void run() {
+
     }
 }

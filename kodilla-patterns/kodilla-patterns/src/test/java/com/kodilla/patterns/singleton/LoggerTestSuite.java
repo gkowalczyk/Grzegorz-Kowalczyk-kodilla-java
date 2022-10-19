@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoggerTestSuite {
 
-    private static Logger logger;
+
+   // private static Logger logger;
 
     @Test
     void testGetLastLog() {
@@ -14,9 +15,10 @@ public class LoggerTestSuite {
         String log1 = "1st log";
         String log2 = "2nd log";
         //When
-        logger.getInstance().log(log1);
-        logger.getInstance().log(log2);
+        Logger.getInstance().log(log1);
+        Logger.getInstance().log(log2);
         //Then
+        assertEquals(log2, Logger.getInstance().getLastLog());
         assertEquals(log2, Logger.getInstance().getLastLog());
         //System.out.println(Logger.getInstance().getLastLog());
 

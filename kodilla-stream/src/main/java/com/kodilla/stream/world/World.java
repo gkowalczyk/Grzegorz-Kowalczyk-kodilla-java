@@ -17,8 +17,5 @@ public void addContinent(Continent continent) {
                     .flatMap(continent -> continent.getListCountry().stream())
                     .map(Country::getGetPeopleQuantity)
                     .reduce(BigDecimal.ZERO,(sum,current) -> sum=sum.add(current));
-
-
-
     }
 }

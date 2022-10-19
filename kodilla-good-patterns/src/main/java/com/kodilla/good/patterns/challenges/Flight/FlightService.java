@@ -26,23 +26,34 @@ public final class FlightService {
     public List <List<Flight>> via (String from, String to) {
 
         List<Flight> flightsFrom = findAllFrom(from);
+        //GDA ->  KRA
+
+        //GDA -> WAW
+
 
         List<Flight> flightsTo = findAllTo(to);
+
+
+
+        //KRA-> RZE
+        //KAT -> RZE
+        //WAW -> RZE
 
         List<List<Flight>>  flights = new ArrayList<>();
 
         flightsFrom.stream()//zwracamy listy
-                .filter(flight -> flightsTo.contains(new Flight(flight.getFlightTo(),to))) //
+                .filter(flight -> flightsTo.contains(new Flight(flight.getFlightTo(),to))) //You can fly: To='KRA',From='GDA'}
                 //   GDA  ->> RZE
 
                 //   GDA  ->> KRA
                 //   KRA ->> RZE
+               //.collect(Collectors.toList())
                 .forEach(flight -> {
                    List<Flight> connection = new ArrayList<>();
                    connection.add(flight);//[[Flight1{from='GDA', to='KRA'},
                    connection.add(new Flight(flight.getFlightTo(),to));//Flight1{from='KRA', to='RZE'}]]
-                   String via = flight.getFlightTo();
-                    System.out.println(" You can fly From:" +  from  + " To: " + to  + " via:" + via );
+                   //String via = flight.getFlightTo();
+                    //System.out.println(" You can fly From:" +  from  + " To: " + to  + " via:" + via );
                   flights.add(connection);
                 } );
         return flights;

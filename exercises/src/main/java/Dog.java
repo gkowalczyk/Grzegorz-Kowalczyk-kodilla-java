@@ -27,6 +27,7 @@ class main {
     public static void main(String[] args) {
         Dog pies = new Dog("Rex", "Owczarek");
 
+
         System.out.println("Pies wabi się: "+pies.dogName + ", jego rasa to: " + pies.dogBreed + ".");
         pies.bark();
     }

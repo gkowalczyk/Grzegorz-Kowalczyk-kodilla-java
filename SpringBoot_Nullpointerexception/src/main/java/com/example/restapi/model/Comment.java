@@ -9,15 +9,19 @@ import java.time.LocalDateTime;
 public class Comment {
 
     private long id;
+    private long postId;
     private String content;
     private LocalDateTime created;
-    //private Post post;
 
-    public Comment(long id, String content, LocalDateTime created) {
+
+    public Comment(long id, long postId, String content, LocalDateTime created) {
         this.id = id;
+        this.postId = postId;
         this.content = content;
         this.created = created;
     }
+
+
 
     public Comment() {
 
@@ -47,6 +51,11 @@ public class Comment {
         this.created = created;
     }
 
-
-
+    public long getPostId() {
+        return postId;
     }
+
+    public void setPostId(long postId) {
+        this.postId = postId;
+    }
+}

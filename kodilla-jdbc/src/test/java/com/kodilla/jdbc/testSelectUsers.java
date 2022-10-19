@@ -14,15 +14,16 @@ public class testSelectUsers {
         //given
         DbManager dbManager = DbManager.getInstance();
         //When
-        String sqlQuery = "SELECT * FROM USERS";
+        String sqlQuery = "SELECT * FROM BOOKS";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(sqlQuery);
         //then
         int counter = 0;
         while (rs.next()) {
-            System.out.println(rs.getInt("ID") + "." +
-                    rs.getString("FIRSTNAME") + "," +
-                    rs.getString("LASTNAME"));
+            System.out.println(rs.getInt("BOOK_ID") + "." +
+                    rs.getString("TITLE") + "," +
+                    rs.getString("PUBYEAR")+ "," +
+                    rs.getString("BESTSELLER")+ ","  );
             counter++;
         }
         rs.close();

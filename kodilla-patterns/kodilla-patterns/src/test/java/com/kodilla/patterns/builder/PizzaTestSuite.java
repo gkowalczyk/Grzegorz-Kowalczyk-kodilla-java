@@ -11,15 +11,15 @@ public class PizzaTestSuite {
         //Given
         Pizza pizza = new Pizza.PizzaBuilder()
                 .ingredients("Onion")
-                 .bottom("Thin")
-                 .sauce("Spicy")
-                 .ingredients("Ham")
-                 .ingredients("Mushrooms")
-                  .build();
+                .bottom("Thin")
+                .sauce("Spicy")
+                .ingredients("Ham")
+                .ingredients("Mushrooms")
+                .build();
         System.out.println(pizza);
         //When
         int howManyIngredients = pizza.getIngredients().size();
-                //Then
+        //Then
         assertEquals(3, howManyIngredients);
     }
 }

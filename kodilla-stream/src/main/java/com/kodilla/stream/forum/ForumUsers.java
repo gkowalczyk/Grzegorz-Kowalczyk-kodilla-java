@@ -1,7 +1,5 @@
 package com.kodilla.stream.forum;
 
-import com.kodilla.stream.forumuser.ForumUser;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,6 +39,7 @@ public final class ForumUsers {
                 .filter(user -> user != this)
                 .map(ForumUsers::getLocation) //friend -> friend.getLocation()
                 .collect(Collectors.toSet());
+
     }
 
     public String getUsername() {

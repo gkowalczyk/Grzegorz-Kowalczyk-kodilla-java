@@ -11,6 +11,15 @@ import java.util.stream.Stream;
 
 public class FunctionalInterface {
 
+
+// Interfejsy funkcyjne
+//Interfejsy funkcyjne zostały wprowadzone w Javie 8, aby umożliwić działanie funkcyjne w wyrażeniach lambda.
+//
+//Definicja takiego interfejsu jest bardzo prosta: interfejsem funkcyjnym jest każdy interfejs, który posiada deklarację tylko i wyłącznie jednej metody abstrakcyjnej. Dla przypomnienia: metoda abstrakcyjna to taka metoda, która nie posiada ciała, czyli definicji. Interfejs funkcyjny może posiadać metody defaultowe albo statyczne. Ważne jednak, aby posiadał tylko i wyłącznie jedną metodę abstrakcyjną.
+//
+//Klasycznym przykładem takiego interfejsu, znanym jeszcze sprzed Javy 8, jest interfejs Runnable, który posiada deklarację tylko jednej metody: run.
+
+
     //@FunctionalInteface.FunctionalInterface
     //public interface Function<T, R> {
     //
@@ -26,7 +35,9 @@ public class FunctionalInterface {
         Function<Integer, String> function = t -> t + t + " tekst ";
         System.out.println(function.apply(69));
 
+
     }
+
 
     //@FunctionalInterface
     //public interface Predicate<T> {
@@ -42,9 +53,10 @@ public class FunctionalInterface {
     @Test
     void predicate() {
         Predicate<Student> predicate = p -> p.getAge() > 21;
-        boolean test2 = predicate.test(new Student("Karolina", "Nowak", 20));
+        boolean test2 = predicate.test(new Student("Karolina", "Nowak", 22));
         System.out.println(test2);
     }
+
 
     //@FunctionalInterface
 //public interface Runnable {
@@ -67,19 +79,12 @@ public class FunctionalInterface {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() { //metoda abstrakcyjna
-                System.out.println("ello");
+                System.out.println("I am inside the thread");
             }
         });
         t1.start();
     }
 
-    @Test
-    void functionalThread() { //niejawnie
-
-        Thread t1 = new Thread(() -> System.out.println("hello"));
-
-        t1.start();
-    }
 
     @Test
     void ConsumerFull() {
@@ -92,6 +97,17 @@ public class FunctionalInterface {
 //     * @param t the input argument
 //     */
 //    void accept(T t);
+
+        //Consumer<T>, który posiada metodę accept(T t).
+        // Tu więc sprawa jest dość oczywista: jest to
+        // interfejs z metodą, która „konsumuje” dany
+        // przekazany argument, coś z nim robiąc,
+        // ale nie zwraca niczego. Najprostszym
+        // przykładem wykorzystania implementacji
+        // takiego interfejsu jest chociażby
+        // System.out.println. Nic nie zwraca,
+        // za to przyjmuje jeden argument – String
+        // i wypisuje go na standardowym wyjściu,
         List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
         names.forEach(new Consumer<String>() {
             @Override
@@ -101,6 +117,8 @@ public class FunctionalInterface {
         });
 
     }
+
+
 
     @Test
     void ConsumerShort() {
@@ -179,6 +197,21 @@ public class FunctionalInterface {
     }
 
     @Test
+    void example() {
+
+        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
+         long counter = names.stream()
+                 .filter(name -> name.length() >2)
+                 .count();
+        System.out.println(counter);
+
+
+
+    }
+
+
+
+    @Test
     public void classicProgrammingExampleSolution() {
 
         List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
@@ -192,11 +225,13 @@ public class FunctionalInterface {
     @Test
     public void classicProgrammingExampleSolution1() {
 
-        List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
-        long counter = names.stream()
-                .filter(name -> name.length() > 6)
-                .count();
-        System.out.println(counter);
+        List<Integer> names = Arrays.asList(1,2,3,4,5);
+        final int[] con = {2};
+       Stream<Integer> integerStream = names.stream()
+                .map(integer -> integer * con[0]);
+        con[0] = 3;
+                        integerStream.forEach(System.out::println);
+ con[0] = 3;
     }
 
     @Test
@@ -243,12 +278,16 @@ public class FunctionalInterface {
         System.out.println(collect);
     }
 
+
+
     @Test
     public void mapExample() {
         List<String> names = Arrays.asList("Przemek", "Dorota", "Lukasz", "Karol", "Anna", "Marcysia");
-        names.stream()
-                .map(String::length)
-                .forEach(System.out::println);
+        String name = names.stream()
+              //  .map(String::length)
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.joining(","));
+        System.out.println(name);
     }
 
     @Test
@@ -277,6 +316,10 @@ public class FunctionalInterface {
         System.out.println(optionalInt.getAsInt());
     }
 
+
+
+
+
     @Test
     public void statistics1() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -287,4 +330,26 @@ public class FunctionalInterface {
 
         System.out.println(intSummaryStatistics);
     }
+      @Test
+    void moreThanOneLineCode(){
+          List<Integer> numbers = Arrays.asList(0, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+          numbers.forEach(element -> {
+              int x =11;
+              element +=x;
+              System.out.println(element*10);
+
+          });
+      }
+
+      @Test
+      void moreThanOneLineCode1() {
+          List<Integer> numbers = Arrays.asList(0, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> list = numbers.stream()
+                .map(element -> 11 + element)
+                  .map(element -> element * 10)
+                  .collect(Collectors.toList());
+          System.out.println(list);
+      }
 }
+
+

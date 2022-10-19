@@ -30,6 +30,7 @@ class KodillaSpringApplicationTests {
     @Test
     void testSquareLoadedIntoContainer() {
         //Given
+
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
         Shape shape = (Shape) context.getBean("createSquare");

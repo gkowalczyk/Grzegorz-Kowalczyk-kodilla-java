@@ -23,12 +23,20 @@ public class SearchingFlight {
         if (airportMap().containsKey(flight.getArrivalAirport()) && (airportMap().containsKey(flight.getDepartureAirport()) &&
                 (airportMap().get(flight.getArrivalAirport())) && (airportMap().get(flight.getDepartureAirport())))) {
             System.out.println("You can fly to: " + flight.getArrivalAirport() + " from:" + flight.getDepartureAirport());
+            System.out.println(airportMap().get(flight.getArrivalAirport()));
+            System.out.println(airportMap().containsKey(flight.getArrivalAirport()));
         } else {
             System.out.println("Find different directions");
+
             throw new RouteNotFoundException();
         }
     }
 }
 //abstract V get(Object key)  Returns the value to which the key is mapped in this dictionary.
 //public abstract boolean containsKey(Object key) Returns: true if this map contains a mapping for the specified key
+
+
+
+
+
 

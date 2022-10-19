@@ -9,13 +9,13 @@ public final class DataBase {
 
      static  {
         flightSet.add(new Flight("KRA","RZE"));
-        flightSet.add(new Flight("GDA","RZE"));
-        flightSet.add(new Flight("GDA","RZE"));
-        flightSet.add(new Flight("GDA","KAT"));
-        flightSet.add(new Flight("WRO","RZE"));
-        flightSet.add(new Flight("KRA","WAW"));
         flightSet.add(new Flight("WAW","RZE"));
-        flightSet.add(new Flight("POZ","KRA"));
+       // flightSet.add(new Flight("GDA","RZE"));
+       // flightSet.add(new Flight("GDA","KAT"));
+       // flightSet.add(new Flight("WRO","RZE"));
+       // flightSet.add(new Flight("KRA","WAW"));
+       // flightSet.add(new Flight("WAW","RZE"));
+        flightSet.add(new Flight("GDA","WAW"));
         flightSet.add(new Flight("GDA","KRA"));
     }
     public  static Set<Flight> copyFlightSet() {
@@ -23,7 +23,16 @@ public final class DataBase {
     }
    }
 
+    /*public final Set<com.kodilla.good.patterns.challenges.flight1.Flight> flightsSet() {
+        final  Set<com.kodilla.good.patterns.challenges.flight1.Flight> flightSetMap = new HashSet<>();
 
+        flightSetMap.add(new com.kodilla.good.patterns.challenges.flight1.Flight("GDA", "RZE"));
+        flightSetMap.add(new com.kodilla.good.patterns.challenges.flight1.Flight("KRA", "RZE"));
+        flightSetMap.add(new com.kodilla.good.patterns.challenges.flight1.Flight("GDA", "KRA"));
+        return new HashSet<>(flightSetMap);
+    }
+}
+*/
 
 
 

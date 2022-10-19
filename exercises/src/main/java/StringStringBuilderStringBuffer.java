@@ -2,9 +2,11 @@ public class StringStringBuilderStringBuffer {
 
 //https://javastart.pl/baza-wiedzy/klasy/string-stringbuffer-i-stringbuilder
    //https://stormit.pl/stringbuilder/
-
+   // https://1024kb.pl/nauka-java/jak-polaczyc-stringi-w-javie/
 
     public static void main(String[] args) throws InterruptedException {
+
+
 
         //StringBuilder __>>>>>>>
 
@@ -14,6 +16,11 @@ public class StringStringBuilderStringBuffer {
         // obiekty mogą się rozszerzać i zmieniać swoją zawartość. Dzięki
         // temu można łączyć ze sobą różne fragmenty tekstu, bez konieczności
         // generowania wielu niepotrzebnych obiektów.
+
+        //Klasy te bazują na tablicy znaków, do której za każdy dodaniem nowego znaku
+        // (append) jest dodawany znak. Dopiero na sam koniec operacji – podczas
+        // wywołania toString() – jest tworzony obiekt String. Tak, tworzymy
+        // tylko jeden raz obiekt String, dlatego to wszystko wykonuje się dużo szybciej.
 
 StringBuilder stringBuilder = new StringBuilder(); // tworzymy pusty bufor
 stringBuilder.append("java").append("rocks"); // modyfikacja bufora poprzez metode append4
@@ -47,10 +54,7 @@ stringBuilder.insert(4, 8); //metoda insert
         // substring  - zwraca danym ciąg znaków w zakresie int start oraz int end
         System.out.println("stringbuilder:" + stringBuilder.substring(0,3));
 
-
-
-
-
+///////////////////////////////////////////////////////////////////////////////////
 
 
         String s1 = "Kasia";
@@ -60,19 +64,34 @@ stringBuilder.insert(4, 8); //metoda insert
         //do javy 8 :
 
 
-        String s = "Kasia";
-        s = new StringBuilder(s).append(" i Tomek").toString(); //nowy obiekt StringBuilder
-        System.out.println(s);
 
+        String s = "Kasia";
         long start = System.nanoTime();
         for (int i = 0; i < 1000; i++) { // nieefektywna metoda tworzenie 10tyś obiektów StringBuilder  i metod
-            s = s + "a";
+            s = s + "a";  // za każdym razem tworzony jest nowy obiekt , będący kopią
+
+            //      String jest immutable – po dodaniu nowego Stringa (po zmianie stanu obiektu) – została zwrócona
+            //      jego kopia, czyli obiekt z nowym adresem.
+            //String blog = "1024kb";
+            //System.out.println("Adres String przed dodaniem: " + Integer.toHexString(blog.hashCode()));
+            //blog += ".pl";
+            //System.out.println("Adres String po dodaniu nowego Stringa: " + Integer.toHexString(blog.hashCode()));
+
         }
 
         System.out.println("Time1:" + (System.nanoTime() - start + "ns"));
 
 
         //efektywniej ->>>
+
+        //Klasy te bazują na tablicy znaków, do której za każdy dodaniem nowego
+        // znaku (append) jest dodawany znak. Dopiero na sam koniec operacji –
+        // podczas wywołania toString() – jest tworzony obiekt String. Tak,
+        // tworzymy tylko jeden
+        // raz obiekt String, dlatego to wszystko wykonuje się dużo szybciej.
+       // String s = "Kasia";
+        s = new StringBuilder(s).append(" i Tomek").toString(); //nowy obiekt StringBuilder
+        System.out.println(s);
 
         long start1 = System.nanoTime();
         StringBuilder sb = new StringBuilder(s);//tworzymy obiekt przed pętlą
@@ -115,7 +134,10 @@ new Thread(() -> {
 // wyniki rzędu 120 tys. Wychodzi na to, że 80 tys. znaków przepadło!
 
 
-
+//Jeszcze raz, najważniejsze różnice:
+//String jest immutable, StringBuilder i StringBuffer – mutable (bufor)
+//String przechowywany jest w String Pool, StringBuilder i StringBuffer – w normalnej stercie
+//StringBuilder i StringBuffer są znacznie wydajniejsze do celów modyfikacji sekwencji znaków
 
 
     }
