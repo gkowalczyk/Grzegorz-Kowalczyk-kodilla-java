@@ -1,4 +1,3 @@
-import java.util.Collections;
 import java.util.List;
 
 public class AverageMarks {
@@ -20,7 +19,7 @@ public class AverageMarks {
     //4,4,4,4,4,4,4 – do obliczenia średniej wzięte zostaną oceny: 4,4,4,4,4
     public static void main(String[] args) {
 
-        List<Double> marks = List.of(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+        List<Double> marks = List.of(2.0, 2.0, 3.0, 4.0, 5.0, 6.0);
         double sum = 0;
         double mark = marks.get(0);
         double max = 0;
@@ -36,9 +35,11 @@ public class AverageMarks {
 
                 min = mark;
             }
+
             sum = sum + mark;
 
         }
+
         System.out.println("avg =" + (sum - max - min) / (marks.size() - 2));
         System.out.println("max=" + max);
         System.out.println("min=" + min);
@@ -48,7 +49,7 @@ public class AverageMarks {
         //alternatywa:
 
 
-        double maxValue = Collections.max(marks);
+      /*  double maxValue = Collections.max(marks);
         double minValue = Collections.min(marks);
 
         System.out.println("Marks before removing max and min=" + marks.size());
@@ -78,7 +79,7 @@ public class AverageMarks {
             double average = sum1 / (double) marks.size();
 
             System.out.println("Average without max && min mark=" + average);
-        }
+        }*/
     }
 }
 

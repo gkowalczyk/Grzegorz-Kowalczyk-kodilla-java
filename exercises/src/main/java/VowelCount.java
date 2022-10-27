@@ -16,7 +16,7 @@ public class VowelCount {
     // //{x,y} – oznacza, że element poprzedzający musi wystąpić od x do y razy.
     //            //A-Z] – znak z tej klasy znaków, wielka litera,
     //            //[a-z] mała litera użyta co najmniej raz.
-    //            //[^-]* – Jakikolwiek znak tylko nie minus powtórzony dowolną ilość razy,
+    //            //[^-]* – Jakikolwiek znak tylko nie minus powtórzony dowolną ill razy,
     //
     //
     //            Pattern pattern = Pattern.compile("[a-zA-Z][a-zA-Z0-9_]{2,23}[^_]");
@@ -41,7 +41,7 @@ public class VowelCount {
     public static void main(String[] args) {
         // keep this function call here
         Scanner s = new Scanner(System.in);
-        System.out.print(VowelCount("coderbyte"));
+        System.out.print(VowelCount("All cows eat grass and moo"));
     }
 
 }

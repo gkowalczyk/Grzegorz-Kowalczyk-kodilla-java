@@ -25,6 +25,7 @@ public class Post {
     private LocalDateTime created;
     private List<Comment> comment;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // dodawanie postów wg tabeli w bazie danych
     public long getId() {
         return id;
     }
@@ -59,8 +60,8 @@ public class Post {
 
     //FetchType.LAZY  – pobieramy dane dopiero wtedy, gdy ich potrzebujemy. W praktyce wtedy, gdy użyjemy gettera na powiązanej kolekcji, Hibernate wykonuje zapytanie do bazy danych.
 //FetchType.EAGER – pobieramy dane, gdy zostaje wykonane zapytanie pobierające nadrzędną część relacji.
-    @OneToMany(fetch = FetchType.LAZY)
-   @JoinColumn(name = "postId")
+    @OneToMany(cascade = CascadeType.REMOVE) // w endpoint delete jest klucz obcy, jesli chcemy pozwolić na usunięcie
+   @JoinColumn(name = "postId", updatable = false, insertable = false) //updatable = false, insertable = false) nie usuwamy komentarzy przy próbie edycji w endopoint edit
     public List<Comment> getComment() {
         return comment;
 

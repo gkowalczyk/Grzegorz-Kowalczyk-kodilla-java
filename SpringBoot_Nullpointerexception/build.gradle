@@ -30,13 +30,21 @@ compileJava {
         implementation 'io.springfox:springfox-swagger-ui:2.9.2'
         implementation 'io.springfox:springfox-swagger2:2.9.2'
         implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-
+        // implementation 'org.springframework.boot:spring-boot-starter-security'
+       // implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.7.4'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.7.4'
+// https://mvnrepository.com/artifact/net.sf.ehcache/ehcache
+        implementation 'org.ehcache:ehcache:3.8.1'
+        implementation 'javax.cache:cache-api:1.1.1'
+// https://mvnrepository.com/artifact/org.liquibase/liquibase-core
+       // implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.17.0'
+        runtimeOnly 'mysql:mysql-connector-java'
         implementation 'org.springframework.boot:spring-boot-starter-web'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         testCompileOnly 'org.projectlombok:lombok:1.18.22'
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
-        testImplementation group: 'com.h2database', name: 'h2', version: '1.3.148'
+       // testImplementation group: 'com.h2database', name: 'h2', version: '2.1.214'
     }
     test {
         useJUnitPlatform()
