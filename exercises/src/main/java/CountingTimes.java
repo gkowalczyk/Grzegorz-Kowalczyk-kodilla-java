@@ -26,6 +26,7 @@ public class CountingTimes {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mma");
         Date date1 = simpleDateFormat.parse(t1);
         Date date2 = simpleDateFormat.parse(t2);
+        System.out.println(date2.getTime());
 
         if (date2.before(date1)) {
             date2 = new Date(date2.getTime() + TimeUnit.DAYS.toMillis(1));

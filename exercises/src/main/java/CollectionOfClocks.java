@@ -41,11 +41,14 @@ public class CollectionOfClocks {
     public static void main(String[] args) {
 
         CollectionOfClocks collectionOfClocks = new CollectionOfClocks(12, 59);
+        CollectionOfClocks collectionOfClocks1 = new CollectionOfClocks(13, 01);
         List<CollectionOfClocks> collectionOfClocksList = new LinkedList<>();
         collectionOfClocksList.add(collectionOfClocks);
+        collectionOfClocksList.add(collectionOfClocks1);
 
         for (CollectionOfClocks clocks : collectionOfClocksList) {
             clocks.addMinuteMethod();
+
             System.out.println(clocks);
         }
     }
