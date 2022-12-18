@@ -20,11 +20,13 @@ public class ReaderConfig {
 }
 @Bean(name = "book1")
     @Scope("prototype")
+
     public Book getOneBook() {
     return new Book("The book number one");
 }
 @Bean(name = "book2")
     @Scope("prototype")
+
 @Conditional(IfDayIsOddCondition.class)
 public Book getBookTwo() {
     return new Book("The book number two");

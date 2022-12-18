@@ -23,6 +23,11 @@ compileJava {
     }
 
     dependencies {
+
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
+        implementation group: 'org.springframework.boot', name: 'spring-boot', version: '2.5.5'
+
+
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
         compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 

@@ -44,13 +44,12 @@ public class TreeConstructor {
                 parent.put(array[1], parentCounter == null ? 1 : ++parentCounter); // ++count   -> increment +1
             }
         }
-
         return "" + (child.size() == strArr.length);
     }
 
     public static void main(String[] args) {
         // keep this function call here
         Scanner s = new Scanner(System.in);
-        System.out.print(TreeConstructor(new String[] {"(2,5)", "(2,6)"}));
+        System.out.print(TreeConstructor(new String[] {"(1,2)", "(3,4)"}));
     }
 }
