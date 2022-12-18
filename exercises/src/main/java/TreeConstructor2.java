@@ -61,7 +61,6 @@ public class TreeConstructor2 {
         }
         return counter > 2 || nodeList.size() != strArr.length ? "false" : "true";
     }
-
     public static void main(String[] args) {
         // keep this function call here
         Scanner s = new Scanner(System.in);
