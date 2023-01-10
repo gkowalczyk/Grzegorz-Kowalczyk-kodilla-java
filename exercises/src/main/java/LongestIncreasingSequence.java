@@ -18,8 +18,6 @@ public class LongestIncreasingSequence {
 //Input: new int[] {10, 22, 9, 33, 21, 50, 41, 60, 22, 68, 90}
 //Output: 7
 
-
-
     public static int LongestIncreasingSequence(int[] arr ) {
         int[] tempArray = new int[arr.length];
         Arrays.fill(tempArray, 1);
@@ -28,19 +26,14 @@ public class LongestIncreasingSequence {
             for (int b = 0; b  < a; b++) {
                 if (arr[a] > arr[b]) {
                     tempArray[a] = Math.max(tempArray[b] + 1, 0);
-
-
                     }
                 }
-
             }
             int result = 0;
             for (int number : tempArray) {
                 result = Math.max(0, number);
                 System.out.println(result);
-
             }
-
             return result;
         }
 
