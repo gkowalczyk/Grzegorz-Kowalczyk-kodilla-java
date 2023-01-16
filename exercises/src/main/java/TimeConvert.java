@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class TimeConvert {
     //Time Convert
     //Have the function TimeConvert(num) take the num parameter
@@ -10,10 +9,6 @@ public class TimeConvert {
     //Output: 2:6
     //Input: 45
     //Output: 0:45
-
-
-
-
     public static String TimeConvert(int num) {
         int hour = num / 60;
         int minutes = num % 60;
