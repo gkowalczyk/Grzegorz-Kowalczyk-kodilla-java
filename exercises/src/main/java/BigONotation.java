@@ -4,14 +4,28 @@ import java.util.Arrays;
 
 public class BigONotation {
     public static void main(String[] args) {
+
         BigONotation bigONotation = new BigONotation();
         System.out.println(bigONotation.sum(new int[]{1, 2, 3, 4}));
         System.out.println(bigONotation.sum1(new int[]{1, 2, 3, 4}));
         System.out.println(bigONotation.binarySearch(new int[]{1, 2, 3, 4, 5}, 2));
         System.out.println(Arrays.toString(sort(new int[]{1, 10, 8, 3, 4})));
         System.out.println(Arrays.toString(sort1(new int[]{1, 10, 8, 3, 4})));
-        // Arrays.sort(new int[]{1, 8, 3, 4, 5});
+        System.out.println(Arrays.toString(powerSet(new int[]{1, 10, 8})));
 
+        // Arrays.sort(new int[]{1, 8, 3, 4, 5});
+       // System.out.println(format32bit(44));
+       // String v =  format32bit(44 << 1);
+       // System.out.println(v);
+        //System.out.println(binaryStringToDecimal(v));
+    }
+    static String format32bit(int value) {
+        return String.format("%16s",
+                Integer.toBinaryString(value)).replaceAll(" ", "0");
+    }
+
+    static int binaryStringToDecimal(String binaryValue) {
+        return (int) Long.parseLong(binaryValue, 2);
     }
 
 /*
@@ -39,6 +53,13 @@ public int sum(int[] n
 
 Złożoność kwadratowa. Jest to specyficzny przypadek złożoności wielomianowej. Przykładowy problem może być ten, który użyłem wyżej – posortowanie tablicy. Tym razem jednak algorytm jest mniej wydajny. Sortowanie bąbelkowe
  charakteryzuje się złożonością obliczeniową Ο(n^2):
+
+
+//Ο(x^n)
+Jest to złożoność wykładnicza, jej przykładem może być Ο(2^n). Problemem, który ma rozwiązanie o złożoności co najmniej Ο(2^n) jest:
+
+Na wejściu programu jest tablica unikalnych liczb. Zwróć tablicę, która będzie zawierała wszystkie możliwe podzbiory elementów tablicy wejściowej.
+
 
 * */
 
@@ -124,15 +145,60 @@ Złożoność kwadratowa. Jest to specyficzny przypadek złożoności wielomiano
     public static int[] sort1(int[] numbers) {
 
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < numbers.length -1 ; j++) {
-                if(numbers[j + 1] < numbers[j]) {
+            for (int j = 0; j < numbers.length - 1; j++) {
+                if (numbers[j + 1] < numbers[j]) {
                     int min = numbers[j + 1];
-                    numbers[j+1] = numbers[j];
+                    numbers[j + 1] = numbers[j];
                     numbers[j] = min;
                 }
             }
         }
         return numbers;
+    }
+//Ο(log(n)2^n).
+//Jest to złożoność wykładnicza, jej przykładem może być Ο(2^n). Problemem, który ma rozwiązanie o złożoności co najmniej Ο(2^n) jest:
+//
+//Na wejściu programu jest tablica unikalnych liczb. Zwróć tablicę, która będzie zawierała wszystkie możliwe podzbiory elementów tablicy wejściowej.
+//
+//Wynika to z faktu, że wszystkich możliwych podzbiorów zbioru, który ma n elementów jest dokładnie 2^n. Poniższy algorytm ma złożoność Ο(log(n)2^n).
+
+    public static int[][] powerSet(int[] numbers) {
+        int two_pow_n = 1 << numbers.length;
+System.out.println(binaryStringToDecimal(format32bit(two_pow_n)));
+        int[][] powerSet = new int[two_pow_n][];
+        for (int subsetIndex = 0; subsetIndex < two_pow_n; subsetIndex++) {
+            powerSet[subsetIndex] = pickNumbers(subsetIndex, numbers);
+        }
+        System.out.println(Arrays.stream(powerSet));
+        return powerSet;
+    }
+
+    private static int[] pickNumbers(int subsetIndex, int[] numbers) {
+        int howManyOnes = 0;
+        int temp = subsetIndex;
+        while (temp > 0) {
+            if (temp % 2 == 1) {
+                howManyOnes++;
+            }
+            temp >>= 1;
+
+        }
+        int[] subset = new int[howManyOnes];
+
+        for (int charIndex = 0, lastElementIndex = 0; subsetIndex > 0; charIndex++) {
+            if (subsetIndex % 2 == 1) {
+                subset[lastElementIndex++] = numbers[charIndex];
+            }
+            subsetIndex >>= 1;
+        }
+
+        return subset;
+
+        //Wynika to z faktu, że wszystkich możliwych podzbiorów zbioru, który ma n elementów jest dokładnie 2^n.
+        // Poniższy algorytm ma złożoność Ο(log(n)2^n).
+//Wynika to z faktu, że pętla wewnątrz metody powerSet wywołana jest dokładnie 2^n razy.
+// Natomiast wewnątrz metody pickNumbers są dwie pętle. Każda z nich ma złożoność Ο(log(n)).
+// Zatem finalna złożoność algorytmu to Ο(log(n)2^n).
     }
 }
 
