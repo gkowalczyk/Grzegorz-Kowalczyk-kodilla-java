@@ -1,4 +1,12 @@
 //https://www.samouczekprogramisty.pl/podstawy-zlozonosci-obliczeniowej/
+/* Złożoność algorytmu :
+
+- pamięciowa
+- czasowa - ile operacji wiodących, jaka jest funkcja
+
+
+
+*/
 
 import java.util.Arrays;
 
@@ -79,7 +87,8 @@ Na wejściu programu jest tablica unikalnych liczb. Zwróć tablicę, która bę
         return sum;
     }
 
-    //O(log(n))
+
+    //O(log(n))  skreślamy połowę danych
 //To popularny algorytm przeszukiwania binarnego. Jego nazwa pochodzi od tego,
 // że przy każdej iteracji algorytmu dzielimy przeszukiwany zbiór na dwie równe4
 // części. Algorytmy, które dzielą w ten sposób problem na mniejsze problemy
