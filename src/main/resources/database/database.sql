@@ -279,6 +279,7 @@ WHERE BillingCity != 'Ottawa'
 GROUP BY BillingCountry
 HAVING SUM >100;
 
+
 średnią, minimalną i maksymalną wartość kolumny total w tabeli invoice,
 
 
