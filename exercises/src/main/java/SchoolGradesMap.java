@@ -1,19 +1,19 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class Student { //klucz
+class Students { //klucz
     private String name;
     private String surname;
     private String pesel;
 
-    public Student(String name, String surname, String pesel) {
+    public Students(String name, String surname, String pesel) {
         this.name = name;
         this.surname = surname;
         this.pesel = pesel;
     }
 
     public boolean equals(Object o) {
-        Student e = (Student) o;
+        Students e = (Students) o;
         return (this.name == e.name) && (this.surname == e.surname) && (this.pesel == e.pesel);
 
     }
@@ -27,13 +27,13 @@ class Student { //klucz
     }
 }
 
-class SchoolGrades {//wartość
+class SchoolGradess {//wartość
 
     double maths;
     double physics;
     double biology;
 
-    public SchoolGrades(double maths, double physics, double biology) {
+    public SchoolGradess(double maths, double physics, double biology) {
         this.maths = maths;
         this.physics = physics;
         this.biology = biology;
@@ -52,20 +52,25 @@ class SchoolGrades {//wartość
 public class SchoolGradesMap {
     public static void main(String[] args) {
 
-        Student student1 = new Student("Jan", "Kowalski", "88991112345");
-        Student student2 = new Student("Adam", "Kowalski", "88991112345");
-        Student student3 = new Student("Wojtek", "Kowalski", "88991112345");
+        Students student1 = new Students("Jan", "Kowalski", "88991112345");
+        Students student2 = new Students("Adam", "Kowalski", "88991112345");
+        Students student3 = new Students("Wojtek", "Kowalski", "88991112345");
 
         SchoolGrades schoolGrades1 = new SchoolGrades(4, 5, 2);
         SchoolGrades schoolGrades2 = new SchoolGrades(2, 2, 2);
         SchoolGrades schoolGrades3 = new SchoolGrades(6, 2, 1);
 
-        Map<Student, SchoolGrades> schoolGradesMap = new HashMap<>();
+        Map<Students, SchoolGrades> schoolGradesMap = new HashMap<>();
         schoolGradesMap.put(student1, schoolGrades1);
         schoolGradesMap.put(student2, schoolGrades2);
         schoolGradesMap.put(student3, schoolGrades3);
+         schoolGradesMap.entrySet().stream().forEach(x -> {
+            x.getKey().toString();
+            double avg =  schoolGradesMap.entrySet().stream().mapToDouble(y -> y.getValue().biology + x.getValue().maths + x.getValue().physics).sum();
+             System.out.println(avg);
+        });
 
-        for (Map.Entry<Student, SchoolGrades> entry : schoolGradesMap.entrySet()) {
+        for (Map.Entry<Students, SchoolGrades> entry : schoolGradesMap.entrySet()) {
             System.out.println("Marks " + entry.getKey() + " equals: " + entry.getValue() + " average : " + entry.getValue().getAverage());
 
         }

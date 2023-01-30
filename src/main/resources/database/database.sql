@@ -100,6 +100,200 @@ SELECT ...
 (ORDER BY ...)
 (   LIMIT ...)
 
+SELECT * FROM Genre LIMIT 5 OFFSET 10;
+
+
+SELECT billingcountry
+FROM invoice;
+
+W przypadku tego typu zapytań z pomocą przychodzi wyrażenie DISTINCT. Pozwala ono na odfiltrowanie powielonych wierszy. Proszę spójrz na przykład:
+SELECT DISTINCT billingcountry
+FROM invoice
+
+
+
+SELECT DISTINCT billingcountry
+              ,billingcity
+FROM invoice;
+
+
+
+Język SQL bardzo często używany jest do generowania różnego rodzaju raportów.
+Raporty te lepiej przegląda się jeśli są odpowiednio uporządkowane. W języku SQL do sortowania wyników używa się wyrażenia ORDER BY. Proszę spójrz na przykład poniżej:
+
+SELECT NamE FROM Genre ORDER BY Name;
+
+SELECT NamE FROM Genre ORDER BY Name DESC ;
+
+SELECT DISTINCT BillingCountry, BillingState FROM Invoice ORDER BY BillingCountry DESC, BillingState;
+
+SELECT DISTINCT billingcountry
+FROM invoice
+ORDER BY billingcity;
+
+
+SELECT GenreId AS 'ID', Name AS 'GENRE NAME' FROM Genre LIMIT 5;
+
+SELECT NAME  FROM Genre UNION ALL
+SELECT  DISTINCT BillingCity FROM Invoice ORDER BY Name;
+
+
+SELECT genreid
+     ,name AS xxx
+FROM genre
+UNION ALL
+SELECT invoiceid
+     ,billingcity
+FROM invoice
+UNION
+SELECT albumid
+     ,title
+FROM album
+ORDER BY xxx
+LIMIT 10;
+
+zwróci dziesięć najdłuższych ścieżek
+(tabela track, kolumna milliseconds), weź pod uwagę tylko te, których kompozytor (kolumna composer) zawiera literę b,
+
+SELECT NAME, Milliseconds, Composer FROM Track
+WHERE Composer LIKE '%b%'
+ORDER BY Milliseconds DESC
+LIMIT 10;
+
+
+zwróci pięć najtańszych ścieżek (tabela track, kolumna unitprice) dłuższych niż minuta,
+
+SELECT NAME, UnitPrice,Milliseconds FROM Track
+WHERE Milliseconds > 60000
+ORDER BY UnitPrice
+LIMIT 5;
+
+zwróci unikalną listę dziesięciu kompozytorów których ścieżki kosztują mniej niż 2$ posortowanych malejąco według
+identyfikatora gatunku (kolumna genreid) i rosnąco według rozmiaru (kolumna bytes),
+
+SELECT DISTINCT Composer , UnitPrice, GenreId, Bytes  FROM Track
+WHERE UnitPrice < 2
+ORDER BY GenreId DESC, Bytes
+LIMIT 10;
+
+
+zwróci dwie kolumny. Pierwsza z nich powinna zawierać ścieżki (kolumna name) droższe niż 1$ i poprawnych kompozytorów
+(kolumna composer nie ma wartości NULL) pod nazwą magic thingy. Druga powinna zawierać
+liczbę bajtów. Wynik powinien zawierać dziesięć wierszy i być posortowany rosnąco po liczbie bajtów3,
+
+SELECT NAME AS 'MAGIC THINGY', Bytes FROM Track
+WHERE UnitPrice > 1
+  UNION ALL
+SELECT Composer, Bytes FROM Track WHERE Composer IS NOT NULL
+ORDER BY Bytes
+LIMIT 10;
+
+zwróci piątą stronę z fakturami (tabela invoice) zakładając,
+że na stronie znajduje się dziesięć faktur i sortowane są według identyfikatora (kolumna invoiceid),
+
+
+SELECT * FROM Invoice
+ORDER BY InvoiceId
+LIMIT 10
+OFFSET 40;
+
+
+>>>>>>Funkcje i grupowanie wierszy w SQL<<<<<<<<<<
+
+SELECT length('ABCD');
+
+SELECT DISTINCT length(BillingState)
+FROM Invoice;
+
+SELECT DISTINCT length(BillingState) AS LEN
+FROM Invoice
+ORDER BY LEN;
+
+
+SELECT * FROM Invoice WHERE length(BillingState) > 3;
+
+
+SELECT max(length(BillingState)) FROM Invoice;
+
+SELECT ABS(-2);
+
+SELECT lower('ABC');
+
+SELECT random();
+
+SELECT substr(12345 ,2,5);
+
+SELECT upper('abc');
+
+>>>>>>>Grupowanie wierszy przy pomocy GROUP BY <<<<<<<<<<
+
+SELECT BillingCountry, max(TOTAL) FROM Invoice
+GROUP BY BillingCountry
+ORDER BY Total, BillingCountry;
+
+
+SELECT billingcountry
+     ,billingstate
+     ,MAX(total)
+FROM invoice
+GROUP BY billingcountry
+       ,billingstate
+LIMIT 5;
+
+
+SELECT BillingCountry, AVG(Total) FROM Invoice
+GROUP BY BillingCountry
+ORDER BY AVG(Total);
+
+
+SELECT BillingCountry, MIN(TOTAL) FROM Invoice
+GROUP BY BillingCountry
+ORDER BY Total, BillingCountry;
+
+
+SELECT BillingCountry, SUM(TOTAL) FROM Invoice
+GROUP BY BillingCountry
+ORDER BY SUM(TOTAL);
+
+
+SELECT COUNT(CustomerId) FROM Invoice;
+
+SELECT COUNT(*) FROM Invoice;
+
+
+SELECT COUNT(DISTINCT CustomerId) FROM Invoice;
+
+Odpowiadając jednym zdaniem możesz powiedzieć, że klauzula
+WHERE służy do filtrowania wyników zapytania biorąc pod
+uwagę pojedynczy wiersz, natomiast klauzula HAVING pozwala
+na filtrowanie
+wyników na podstawie zgrupowanych wartości.
+
+SELECT BillingCountry, SUM(Total) AS SUM FROM Invoice
+GROUP BY BillingCountry
+HAVING SUM > 100
+ORDER BY SUM;
+
+SELECT BillingCountry, SUM(TOTAL) AS SUM FROM Invoice
+WHERE BillingCity != 'Ottawa'
+GROUP BY BillingCountry
+HAVING SUM >100;
+
+średnią, minimalną i maksymalną wartość kolumny total w tabeli invoice,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
