@@ -283,26 +283,157 @@ HAVING SUM >100;
 
 średnią, minimalną i maksymalną wartość kolumny total w tabeli invoice,
 
+SELECT AVG(Total), min(TOTAL), max(TOTAL) FROM Invoice;
+
+liczbę wierszy w tabeli invoice w których długość kolumny billingcountry jest większa niż 5,
+SELECT COUNT(*)  FROM Invoice
+WHERE length(BillingCountry) > 5;
+
+
+liczbę unikalnych dat (kolumna invoicedate), w których wystawiono faktury (tabela invoice),
+SELECT COUNT(DISTINCT InvoiceDate) FROM Invoice;
+
+
+daty (kolumna invoicedate), w których wystawiono co najmniej dwie faktury (tabela invoice),
+SELECT InvoiceDate, COUNT(*)  FROM Invoice
+GROUP BY InvoiceDate
+HAVING COUNT(*) >= 2;
+
+
+pięć losowych wierszy z tabeli genre (wywołania tego zapytania wiele razy powinno zwrócić różne wyniki),
+SELECT * FROM Genre
+ORDER BY random()
+LIMIT 5;
+
+miesięczną (kolumna invoicedate) sumę faktur (kolumna total w tabeli invoice) od kupujących
+z identyfikatorem (kolumna customerid) mniejszym niż 30, wynik powinien być posortowany
+po miesięcznej sumie faktur i zawierać jedynie te miesiące dla których suma jest większa od 40.
+
+SELECT round(SUM(Total),1) AS TOTAL_COST, substr(InvoiceDate, 1, 7) AS MONTHS, CustomerId FROM Invoice
+WHERE CustomerId < 30
+GROUP BY MONTHS
+HAVING TOTAL_COST > 40
+ORDER BY TOTAL_COST
+
+
+>>>>>>>>ILOCZYN KARTEZJAŃSKI<<<<<<<<<<<<
+
+SELECT * FROM Album, Artist;
+
+CREATE TABLE imię_męske (
+    ID SERIAL PRIMARY KEY,
+    NAZWA VARCHAR(100)
+);
+
+CREATE TABLE imię_żeńskie(
+    ID SERIAL PRIMARY KEY ,
+    NAZWA VARCHAR(100)
+);
+
+
+INSERT INTO  imię_męske(NAZWA)
+VALUES ('Jan');
+
+SELECT * FROM imię_męske, imię_żeńskie;
+
+
+
+>>>>>>>>>>>>>>>>>>INNER JOIN<<<<<<<<<<<<<<<<<<<<
+
+
+SELECT * FROM Album INNER JOIN Artist on Album.ArtistId = Artist.ArtistId;
+SELECT * FROM Album, Artist WHERE Album.ArtistId = Artist.ArtistId;
+
+SELECT Album.Title AS ALBUM_TITLE, Artist.Name AS BAND_NAME FROM Album INNER JOIN Artist on Album.ArtistId = Artist.ArtistId;
+
+
+Innymi słowy złączenie typu LEFT OUTER JOIN zwraca:
+
+wiersze dla których warunek złączenia jest spełniony,
+wiersze z “lewej tabeli” dla których nie ma odpowiedników w prawej (*bajka* LEFT OUTER JOIN postac),
+
+SELECT * FROM Album LEFT OUTER JOIN Artist ON Album.ArtistId = Artist.ArtistId;
+
+SELECT * FROM Album RIGHT OUTER JOIN Artist ON Album.ArtistId = Artist.ArtistId;
+Tutaj sprawa jest banalnie prosta bajka RIGHT OUTER JOIN postac zwraca te same wyniki co postac LEFT OUTER JOIN bajka :). Zatem zwykłe odwrócenie tabel wystarczy:
+
+SELECT * FROM Artist LEFT OUTER JOIN Album on Artist.ArtistId = Album.ArtistId;
 
 
 
 
+>>>>>>>>>>FULL OUTER JOIN<<<<<<<<<<<<<
+
+FULL OUTER JOIN jest złączeniem które zwraca:
+
+wiersze dla których warunek złączenia jest spełniony,
+wiersze z “lewej tabeli” dla których nie ma odpowiedników w prawej (*bajka* LEFT OUTER JOIN postac),
+wiersze z “prawej tabeli” dla których nie ma odpowiedników w lewej (bajka RIGHT OUTER JOIN *postac*),
+
+BRAK WSPARCIA, OMIJAJĄC ->>>
+
+SELECT * FROM Album LEFT OUTER JOIN Artist ON Album.ArtistId = Artist.ArtistId
+UNION ALL
+SELECT Album.*, Artist.* FROM Artist LEFT OUTER JOIN Album on Artist.ArtistId = Album.ArtistId
+WHERE Artist.ArtistId IS NULL;
 
 
+JOIN tu, JOIN tamPermalink
+Pamiętam, że na początku mnogość pojęć robiła mi niezły mętlik w głowie. Do tego wszystkiego silniki bazy danych pozwalające na opuszczanie niektórych słów kluczowych nie pomagały. Lista niżej powinna Ci pomóc się w nich odnaleźć:
+
+JOIN to to samo co INNER JOIN,
+LEFT JOIN to to samo co LEFT OUTER JOIN,
+RIGHT JOIN to to samo co RIGHT OUTER JOIN,
+FULL JOIN to to samo co FULL OUTER JOIN,
+CROSS JOIN to to samo co iloczyn kartezjański.
 
 
+liczbę wierszy w iloczynie kartezjańskim tabel track, invoice i invoiceline (UWAGA! to zapytanie może trochę potrwać),
+
+SELECT COUNT(*) from Track,Invoice,InvoiceLine;
 
 
+tytuł albumu (kolumna title w tabeli album) i nazwę artysty
+(kolumna name w tabeli artist) dla wszystkich nazw artystów zaczynających się od s,
+
+SELECT Title, Name FROM Album INNER JOIN Artist ON Album.ArtistId = Artist.ArtistId
+WHERE Name LIKE 's%'
+
+    identyfikator i nazwę list utworów (tabela playlist i playlisttrack), które są puste,
+
+SELECT Playlist.PlaylistId,  Name, TrackId FROM Playlist LEFT JOIN PlaylistTrack PT on Playlist.PlaylistId = PT.PlaylistId
+WHERE PT.PlaylistId IS NULL;
+
+nazwy trzech najczęściej występujących gatunków muzycznych (kolumna name w tabeli genre)
+wraz z odpowiadającą im liczbą utworów (tabela track) posortowaną malejąco po liczbie utworów,
+
+SELECT Genre.Name, COUNT( Track.GenreId) AS COUNTER FROM Genre LEFT JOIN TRACK ON Genre.GenreId = Track.GenreId
+GROUP BY Genre.Name
+ORDER BY COUNTER DESC
+LIMIT 3;
+
+SELECT COUNT(*) FROM Track
+
+tytuły pięciu najdłuższych albumów (kolumna title w tabeli album) posortowanych malejąco
+po ich długości (kolumna milliseconds w tabeli track),
+
+SELECT Title, SUM(Track.Milliseconds) AS SUM FROM Album INNER JOIN Track ON Album.AlbumId = Track.AlbumId
+GROUP BY  Title
+ORDER BY SUM DESC
+LIMIT 5;
+
+tytuły albumów, na których występują utwory z gatunku “Reggae”,
 
 
+SELECT DISTINCT Album.Title, Genre.Name from Album inner join Track on Album.AlbumId = Track.AlbumId
+inner join Genre on Track.GenreId = Genre.GenreId
+WHERE Genre.Name = 'Reggae';
 
+pięć nazw list utworów, które są najdroższe (suma cen wszystkich ścieżek jest największa),
 
-
-
-
-
-
-
-
+SELECT Playlist.Name, SUM(UnitPrice) from PlaylistTrack INNER JOIN Playlist ON PlaylistTrack.PlaylistId = Playlist.PlaylistId
+INNER JOIN Track T on T.TrackId = PlaylistTrack.TrackId
+group by Playlist.Name  ,playlist.playlistid
+ORDER BY SUM(Unitprice) DESC;
 
 
