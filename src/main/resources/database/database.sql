@@ -433,7 +433,169 @@ pięć nazw list utworów, które są najdroższe (suma cen wszystkich ścieżek
 
 SELECT Playlist.Name, SUM(UnitPrice) from PlaylistTrack INNER JOIN Playlist ON PlaylistTrack.PlaylistId = Playlist.PlaylistId
 INNER JOIN Track T on T.TrackId = PlaylistTrack.TrackId
-group by Playlist.Name  ,playlist.playlistid
+group by Playlist.Name
 ORDER BY SUM(Unitprice) DESC;
+
+
+>>>>>>>>>>>>>>>Czym jest podzapytanie<<<<<<<<<<<<<<<<<<<<<<<
+
+SELECT 1;
+
+SELECT * FROM (SELECT 1);
+
+
+SELECT NAME, FROM Artist WHERE ArtistId IN
+                              (SELECT ArtistId FROM Album
+                                  GROUP BY ArtistId
+                                  HAVING COUNT(*) > 10);
+
+
+SELECT ArtistId FROM Album
+GROUP BY ArtistId
+HAVING COUNT(*) > 10
+
+==->>>>>>>
+SELECT NAME, COUNT(*) FROM Artist INNER JOIN Album A on Artist.ArtistId = A.ArtistId
+GROUP BY A.ArtistId
+HAVING COUNT(*) > 10
+
+
+>>>>>>>>>>>>>>>Podzapytania skorelowane<<<<<<<<<<<<<<<<<<<<<<<,
+SELECT trackid
+     ,albumid
+     ,name
+FROM track AS outer_track
+WHERE milliseconds > (SELECT 10 * MIN(milliseconds)
+                      FROM track AS inner_track
+                      WHERE inner_track.albumid = outer_track.albumid);
+
+Podzapytanie wewnątrz listy pobieranych wartości
+
+SELECT  CustomerId, Total, (SELECT AVG(TOTAL) FROM Invoice) AS AVG_TOTAL FROM Invoice
+ORDER BY CustomerId
+LIMIT 14;
+
+SELECT  CustomerId, Total, (SELECT AVG(TOTAL) FROM Invoice AS SUBQUERY_INVOICE WHERE
+    SUBQUERY_INVOICE.CustomerId = QUERY_INVOICE.CustomerId ) AS AVG_TOTAL FROM Invoice AS QUERY_INVOICE
+ORDER BY CustomerId
+LIMIT 14;
+
+Podzapytanie wewnątrz klauzuli FROM
+
+SELECT AVG(Customer_TOTAL) FROM (SELECT SUM(Total) AS Customer_TOTAL from Invoice
+    group by CustomerId);
+
+SELECT SUM(Total) AS Customer_TOTAL, CustomerId from Invoice
+group by CustomerId;
+
+SELECT BillingState, AVG(TOTAL) AS STATE_AVG FROM Invoice GROUP BY BillingState;
+
+
+SELECT invoiceid
+     ,total
+     ,invoice.billingstate
+     ,billingstate_avg.state_avg
+FROM (SELECT billingstate
+           ,AVG(total) AS state_avg
+      FROM invoice
+      GROUP BY billingstate) AS billingstate_avg JOIN invoice
+ON billingstate_avg.billingstate = invoice.billingstate;
+
+
+Podzapytania wewnątrz klauzuli WHERE
+
+SELECT TrackId, Name, Milliseconds FROM Track WHERE Milliseconds < (SELECT 10* MIN(Milliseconds) FROM Track);
+
+
+SELECT TrackId, Name, MediaTypeId FROM Track WHERE MediaTypeId IN (SELECT MediaTypeId FROM MediaType WHERE NAME LIKE '%AAC%')
+
+SELECT AlbumId, name, Milliseconds from Track as outer_track where Milliseconds < (SELECT AVG(Milliseconds) FROM Track AS INNER_TRACK
+    WHERE INNER_TRACK.AlbumId = outer_track.AlbumId);
+
+
+SELECT AVG(Milliseconds) FROM TracK;
+
+SELECT AlbumId, name, Milliseconds from Track where Milliseconds < (SELECT AVG(Milliseconds) FROM TracK);
+
+
+
+OPERATOR EXISTS
+
+SELECT * FROM Employee AS OUTER_EMPLOYEE
+WHERE exists(SELECT * FROM Employee AS INNER_EMPLYEE WHERE OUTER_EMPLOYEE.EmployeeId);
+
+SELECT * FROM Employee
+
+                  sumaryczną wartość (kolumna total) faktur (tabela invoice), których
+                  kwota jest powyżej średniej wartości wszystkich faktur,
+
+SELECT SUM(TOTAL), InvoiceId FROM Invoice WHERE Total > (SELECT AVG(Total) FROM Invoice );
+
+średnią liczbę albumów (tabela album) dla artystów, którzy opublikowali więcej niż dwa albumy,
+
+
+SELECT AVG(INNER_TABLE) FROM
+(SELECT COUNT(AlbumId) AS INNER_TABLE FROM Album
+GROUP BY ArtistId
+HAVING COUNT(AlbumId) > 2);
+
+
+wiersze zawierające identyfikator klienta (kolumna customerid) i wartość faktur ponad
+średnią wartość faktur danego klienta (wartość - średnia).
+Zapytanie powinno zwrócić wyłącznie wiersze gdzie ta różnica jest większa od 0,
+
+
+SELECT CustomerId, (Total - (SELECT avg(Total) FROM Invoice as i2
+where i1.CustomerId = i2.CustomerId)) as average
+from Invoice i1
+where average > 0;
+
+
+te same wyniki, które zwraca zapytanie poniżej bez użycia klauzuli JOIN:
+SELECT name
+FROM artist JOIN album
+                 ON artist.artistid = album.artistid
+GROUP BY name
+HAVING COUNT(*) > 10;
+
+
+SELECT NAME FROM Artist WHERE ArtistId IN
+                              (SELECT ArtistId FROM Album
+                              GROUP BY ArtistId
+                              HAVING COUNT(*) > 10);
+
+
+
+te same wyniki, które zwraca zapytanie poniżej bez użycia klauzuli JOIN:
+SELECT invoiceid
+     ,total
+     ,invoice.billingstate
+     ,billingstate_avg.state_avg
+FROM (SELECT billingstate
+           ,AVG(total) AS state_avg
+      FROM invoice
+      GROUP BY billingstate) AS billingstate_avg JOIN invoice
+                                                      ON billingstate_avg.billingstate = invoice.billingstate;
+
+
+SELECT InvoiceId, Total, BillingState,
+ (SELECT AVG(Total) AS state_avg from Invoice
+ WHERE i1.BillingState = Invoice.BillingState
+     GROUP BY BillingState
+          ) AS BILLING_STATE_AVG
+FROM Invoice i1
+where BillingState IS NOT NULL;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
