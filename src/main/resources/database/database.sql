@@ -587,6 +587,230 @@ FROM Invoice i1
 where BillingState IS NOT NULL;
 
 
+Funkcje analityczne w SQL
+
+SELECT CustomerId, InvoiceId, Total, SUM(Total) OVER (PARTITION BY CustomerId) AS CUSTUMER_TOTAL
+FROM Invoice
+ORDER BY CustomerId
+LIMIT 10;
+
+SELECT CustomerId, InvoiceId, Total, SUM(Total)  AS CUSTUMER_TOTAL
+FROM Invoice
+GROUP BY CustomerId
+ORDER BY CustomerId
+LIMIT 10;
+Można powiedzieć, że funkcje analityczne są podobne do standardowego grupowania przy użyciu klauzuli
+GROUP BY. Funkcje agregujące zwracają jeden wiersz dla grupy, funkcje analityczne zwracają wiele wierszy,
+
+
+SELECT CustomerId, BillingCountry, SUM(TOTAL) OVER (PARTITION BY CustomerId, BillingCountry) FROM Invoice
+
+SELECT CustomerId, BillingCountry, SUM(TOTAL) OVER () FROM Invoice
+
+SELECT CustomerId, BillingCountry, SUM(TOTAL) OVER (PARTITION BY CustomerId, BillingCountry) FROM Invoice
+LIMIT 10
+
+SELECT CustomerId, InvoiceId, Total, SUM(Total) OVER (PARTITION BY CustomerId) AS CUSTUMER_TOTAL
+FROM Invoice
+WHERE CustomerId % 2 = 0
+ORDER BY CustomerId;
+
+                                                        Sortowanie w funkcjach analitycznych
+
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_TOTAL_SUM,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId ORDER BY InvoiceId) AS CUSTOMER_TOTAL_INCREASING_SUM
+FROM Invoice
+ORDER BY CustomerId, InvoiceId
+LIMIT 10;
+
+
+SELECT CustomerId, SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_SUM
+FROM Invoice
+ORDER BY CustomerId;
+
+sprawdź jak na wynik zapytania wpływają różne kolumny użyte do sortowania
+SELECT CustomerId, SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_SUM
+FROM Invoice
+ORDER BY CUSTOMER_SUM DESC ;
+
+SELECT CustomerId, SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_SUM
+FROM Invoice
+ORDER BY InvoiceId ;
+
+użyj kilku kolumn do sortowania wyników/wierszy w partycji,
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_TOTAL_SUM,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId ORDER BY CustomerId) AS CUSTOMER_TOTAL_INCREASING_SUM
+FROM Invoice
+ORDER BY CustomerId, InvoiceId
+LIMIT 10;
+
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId) AS CUSTOMER_TOTAL_SUM,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId ORDER BY Total) AS CUSTOMER_TOTAL_INCREASING_SUM
+FROM Invoice
+ORDER BY CustomerId, InvoiceId
+LIMIT 10;
+
+                                          FUNKCJE OKNA
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(TOTAL) OVER (PARTITION BY CustomerId) AS SUM,
+       AVG(TOTAL) OVER (PARTITION BY CustomerId) AS AVG
+FROM Invoice
+ORDER BY CustomerId
+LIMIT 10;
+
+
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(TOTAL) OVER customer_window AS SUM,
+       AVG(TOTAL) OVER customer_window AS AVG
+FROM Invoice
+WINDOW customer_window as (partition by CustomerId)
+ORDER BY CustomerId
+LIMIT 10;
+
+
+SELECT CustomerId, InvoiceId, Total,
+       SUM(Total) OVER (PARTITION BY CustomerId
+           ORDER BY InvoiceId
+           ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) AS ROLLING_SUM
+FROM Invoice
+ORDER BY CustomerId,
+         InvoiceId
+LIMIT 10;
+
+
+
+SELECT billingcountry
+     ,invoiceid
+     ,total
+     ,SUM(total) OVER (PARTITION BY billingcountry
+    ORDER BY total
+    GROUPS BETWEEN 1 PRECEDING AND 1 FOLLOWING) AS rolling_sum
+FROM invoice
+WHERE billingcountry = 'India'
+ORDER BY total;
+
+SELECT customerid
+     ,invoiceid
+     ,total
+     ,SUM(total) OVER (PARTITION BY customerid
+    ORDER BY total
+    RANGE BETWEEN 2 PRECEDING AND 2 FOLLOWING) AS rolling_sum
+FROM invoice
+ORDER BY customerid
+       ,total
+LIMIT 10;
+
+SELECT( 0.99 + 1.98 + 3.96 + 3.98),
+
+                                                            FILTROWANIE OKNA
+SELECT customerid
+        ,invoiceid
+     ,total
+     ,SUM(total) OVER rows_window AS rolling_sum
+     ,SUM(total) FILTER (WHERE invoiceid != 121)
+    OVER rows_window AS filtered_rolling_sum
+FROM invoice
+    WINDOW rows_window AS (PARTITION BY customerid)
+ORDER BY customerid
+LIMIT 10;
+                                            LISTA FUNKCJI
+
+SELECT CustomerId, TOTAL, row_number() over (PARTITION BY CustomerId) AS ROW_NUMBER
+FROM Invoice
+LIMIT 10;
+
+
+SELECT customerid
+     ,total
+     ,RANK() OVER customer_window AS rank_unsorted
+     ,DENSE_RANK() OVER customer_window AS dense_rank_unsorted
+     ,RANK() OVER (customer_window ORDER BY total) AS rank_sorted
+     ,DENSE_RANK() OVER (customer_window ORDER BY total) AS dense_rank_sorted
+FROM invoice
+    WINDOW customer_window AS (PARTITION BY customerid)
+LIMIT 13;
+
+
+
+SELECT customerid
+     ,total
+     ,NTILE(2) OVER customer_window AS ntile_2
+     ,NTILE(4) OVER customer_window AS ntile_4
+FROM invoice
+    WINDOW customer_window AS (PARTITION BY customerid)
+LIMIT 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
