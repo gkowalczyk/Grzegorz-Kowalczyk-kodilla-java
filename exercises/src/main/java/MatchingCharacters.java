@@ -53,7 +53,6 @@ public class MatchingCharacters {
         if (characters.get(0) == characters.get(characters.size() - 1)) {
             list.add(list.get(0) + list.get(list.size() - 1));
         }
-
         if ((s1).repeat(s.length() / s1.length()).equals(str)) {
             return s1.length() + "";
         }
