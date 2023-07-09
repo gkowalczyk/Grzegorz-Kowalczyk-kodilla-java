@@ -1,6 +1,6 @@
 public class FizzBuzz {
 
-    public void fizzBuzz() {
+    static {
         //Wypisz liczby od 1 do 100, jeżeli liczba jest podzielna przez 3 to wypisz Fizz,
         // jeżeli podzielna przez 5 to Buzz,
         // jeżeli podzielna przez 3 i 5 to wypisz FizzBuzz. W przeciwnym wypadku wypisz liczbę.
@@ -17,11 +17,10 @@ public class FizzBuzz {
             }
                 else System.out.println(i);
         }
-
     }
 
     public static void main(String[] args) {
-        FizzBuzz fizzBuzz = new FizzBuzz();
-        fizzBuzz.fizzBuzz();
+        //FizzBuzz fizzBuzz = new FizzBuzz();
+        //fizzBuzz.fizzBuzz();
     }
 }
