@@ -1,4 +1,4 @@
-package DijkstraAlgorithm;
+package Dijkstra_Algorithm;
 
 import java.util.Objects;
 
